@@ -35,7 +35,7 @@ your repo access and to practice PR'ing with your team *before* you start
 coding!
 
 - Milton: [GitHub](https://github.com/milton-t) / [LinkedIn](https://www.linkedin.com/in/miltontimms/)
-- Teammate name #2: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Sheldon: [GitHub](https://github.com/ssmall90) / [LinkedIn](https://www.linkedin.com/in/sheldon-small-373003224)
 
    ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
