@@ -38,4 +38,4 @@ coding!
 - Sheldon: [GitHub](https://github.com/ssmall90) / [LinkedIn](https://www.linkedin.com/in/sheldon-small-373003224)
 
    ...
-- Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Micaela: [GitHub](https://github.com/mickeymic25) / [LinkedIn](https://linkedin.com/in/liaccountname)
