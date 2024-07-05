@@ -36,6 +36,5 @@ coding!
 
 - Milton: [GitHub](https://github.com/milton-t) / [LinkedIn](https://www.linkedin.com/in/miltontimms/)
 - Sheldon: [GitHub](https://github.com/ssmall90) / [LinkedIn](https://www.linkedin.com/in/sheldon-small-373003224)
-
-   ...
+- Eslam AbdElhakem: [GitHub](https://github.com/EslamAbdElhakem) / [LinkedIn](https://linkedin.com/in/EslamAbdElhakem)
 - Micaela: [GitHub](https://github.com/mickeymic25) / [LinkedIn](https://linkedin.com/in/liaccountname)
