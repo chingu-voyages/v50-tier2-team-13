@@ -13,17 +13,66 @@ body {
   overflow-x: hidden;
 }
 
-.welcome-bx{
-  position: absolute;
-  width: fit-content;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 0px 20px 0px 20px;
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+/********** MENU ITEMS **********/
+
+.menu-item-card{
+  display: flex;
+  border: 1px solid white ;
+  width: 90%;
+  height: 150px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  box-sizing: border-box; 
+}
+
+.menu-item-image-box{
+  max-width: 30%;
+  min-width: 30%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.menu-item-image-box img{
+object-fit: cover;
+width: 100%;
+border-radius: 10px;
+}
+
+.menu-item-info-box{
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  border-left: solid 1px white;
+  padding-left: 5px;
+  box-sizing: border-box;
+}
 
+.menu-item-info-box h3{
+  padding-top: 5px;
+}
+
+.menu-item-info-box h4{
+  padding-bottom: 10px;
+}
+
+.menu-item-button{
+  display: flex;
+  align-items: end;
+}
+
+.menu-item-button button{
+width: 40px;
+height: 40px;
+margin-bottom: 10px;
+margin-right: 10px;
+border-radius: 10px;
 }
 

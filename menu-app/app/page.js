@@ -1,3 +1,4 @@
+import MenuItem from "@/components/MenuItem";
 
 export default async function Home() {
 
@@ -13,11 +14,43 @@ export default async function Home() {
 
   return (
     <div>
-      <div className="welcome-bx">
-        <h2>Team 13</h2>
-        <h1>Voyage 50</h1>
-        <h2>Tier 2</h2>
+      <div>
+        {pizzas
+        .map((item) => (
+          <MenuItem key={item.id} item={item}/>
+        ))}
       </div>
+      <div>
+        {burgers
+        .map((item) => (
+          <MenuItem key={item.id} item={item}/>
+        ))}
+      </div>
+      <div>
+        {desserts
+        .map((item) => (
+          <MenuItem key={item.id} item={item}/>
+        ))}
+      </div>
+      <div>
+        {drinks
+        .map((item) => (
+          <MenuItem key={item.id} item={item}/>
+        ))}
+      </div>
+      <div>
+        {sandwiches
+        .map((item) => (
+          <MenuItem key={item.id} item={item}/>
+        ))}
+      </div>
+      <div>
+        {bestFoods
+        .map((item) => (
+          <MenuItem key={item.id} item={item}/>
+        ))}
+      </div>
+
     </div>
   );
 }
