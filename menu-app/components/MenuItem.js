@@ -1,14 +1,12 @@
-'use client';
+"use client";
 
 import React from "react";
 
 const MenuItem = ({ item }) => {
-
   return (
     <div className="menu-item-card">
-
       <div className="menu-item-image-box">
-        <img src={item.img} alt={item.id} /> 
+        <img src={item.img} alt={item.id} />
       </div>
 
       <div className="menu-item-info-box">
@@ -17,10 +15,10 @@ const MenuItem = ({ item }) => {
       </div>
 
       <div class="menu-item-button">
-         <button>+</button>
+        <button>+</button>
       </div>
-
     </div>
   );
 };
 export default MenuItem;
+//micaela test
