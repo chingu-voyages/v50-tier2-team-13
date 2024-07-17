@@ -2,7 +2,7 @@
 
 import MenuItem from "./MenuItem";
 
-const Menu = ({ currentMenuData }) => {
+const Menu = ({ currentMenuData, isOpen, handleToggleMenu  }) => {
   const restaurantName =
     currentMenuData.length > 0 ? currentMenuData[0].name : "";
   const restaurantImage =
@@ -11,9 +11,15 @@ const Menu = ({ currentMenuData }) => {
     currentMenuData.length > 0 ? currentMenuData[0].country : "";
 
   return (
-    <div className="menu-box">
+    <div className={`menu-box ${isOpen ? 'open' : ''}`}>
+
+        <button className="close-btn" onClick={handleToggleMenu}>
+            X
+        </button>
+
       <div className="restaurant-info-box">
         <div className="restaurant-image">
+
           <img src={restaurantImage} />
         </div>
 

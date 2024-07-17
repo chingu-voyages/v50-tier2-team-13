@@ -11,7 +11,11 @@ export default  function Home({}) {
 
   const [allMenuItems, setAllMenuItems] = useState([]);
   const [currentMenuData, setCurrentMenuData] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
+  const handleToggleMenu = () => {
+    setIsOpen(!isOpen);
+}
   const handleOnClick = (restaurant) => {
 
     const menuItems = allMenuItems.filter(
@@ -22,6 +26,8 @@ export default  function Home({}) {
     menuItems.map((item) => {
       console.log(`Current items: ${item.id}`);
     });
+
+    handleToggleMenu();
   };
 
 
@@ -50,7 +56,7 @@ export default  function Home({}) {
     <div>
       <Navbar />
       <Map allMenuItems={allMenuItems} handleOnClick={handleOnClick} />
-      <Menu currentMenuData={currentMenuData} />
+      <Menu currentMenuData={currentMenuData} isOpen={isOpen} handleToggleMenu={handleToggleMenu} />
     </div>
   );
 }

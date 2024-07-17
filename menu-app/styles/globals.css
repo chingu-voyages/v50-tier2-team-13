@@ -131,11 +131,30 @@ h6 {
 /********** Restaurant Menu Display **********/
 
 .menu-box {
-  width: 90%;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0; 
+  background: white;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.menu-box.open {
+  height: 100%; 
+}
+
+.close-btn{
+  position: absolute;
+  top: 0; 
+  background-color: black;
+  border-radius: 50%;
+  width: 4em;
+  height: 4em;
+  color: #E2E1E1;
+  font-size: larger;
 }
 
 .restaurant-info-box {
@@ -152,4 +171,9 @@ h6 {
 
 .restaurant-image {
   margin-bottom: 20px;
+}
+
+
+.restaurant-title {
+ padding-left: 20px;
 }
