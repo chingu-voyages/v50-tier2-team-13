@@ -1,6 +1,9 @@
 import MenuItem from "@/components/MenuItem";
+import dynamic from "next/dynamic";
 
 export default async function Home() {
+
+  const Map = dynamic(() => import('../components/Map'), {ssr: false});
 
   const res = await fetch('https://menus-api.vercel.app/');
   const data = await res.json();
@@ -14,6 +17,7 @@ export default async function Home() {
 
   return (
     <div>
+      <Map/>
       <div>
         {pizzas
         .map((item) => (
