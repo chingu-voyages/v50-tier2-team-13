@@ -1,15 +1,70 @@
 "use client";
 
 import "leaflet/dist/leaflet.css";
+import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 
-const Map = () => {
+const Map = ({resturants}) => {
 
-  const locations = [
-    { lat: 51.505, lng: -0.09, name: 'Location 1' },
-    { lat: 51.515, lng: -0.1, name: 'Location 2' },
-];
+
+
+const [restaurants, setRestaurants] = useState([]);
+
+
+useEffect(() => {
+
+    const fetchData = async () => {
+      const res = await fetch('https://menus-api.vercel.app/');
+      const data = await res.json();
+
+      const pizzas = data.pizzas;
+      const burgers = data.burgers;
+      const desserts = data.desserts;
+      const drinks = data.drinks;
+      const sandwiches = data.sandwiches;
+      const bestFoods = data['best-foods'];
+
+      const allItems = [
+        ...data.pizzas,
+        ...data.burgers,
+        ...data.desserts,
+        ...data.drinks,
+        ...data.sandwiches,
+        ...data['best-foods'],
+      ];
+
+      console.log('All Items Before Filter:', allItems);
+
+      const uniqueLocations = new Set();
+
+      const uniqueRestaurants = allItems.
+      filter(item => 
+        {
+        const { latitude, longitude } = item;
+        if (latitude == null || longitude == null) 
+            {
+                console.warn('Invalid location:', item);
+                return false;
+            }
+        const locationKey = `${latitude},${longitude}`;
+        if (uniqueLocations.has(locationKey)) {
+          return false;
+        }
+        uniqueLocations.add(locationKey);
+        return true;
+      });
+
+      setRestaurants(uniqueRestaurants);
+
+      console.log('All Items After Filter:', uniqueRestaurants);
+
+    };
+
+    fetchData();
+  }, []);
+
+
 
 var greenIcon = L.icon({
     iconUrl: 'marker.png',
@@ -29,10 +84,10 @@ var greenIcon = L.icon({
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-       {locations.map((location, idx) => (
+       {restaurants.map((restaurant) => (
         <Marker
-          key={idx}
-          position={[location.lat, location.lng]}
+        key={restaurant.id}
+          position={[restaurant.latitude, restaurant.longitude]}
           icon={greenIcon}
         >
         <Popup>
