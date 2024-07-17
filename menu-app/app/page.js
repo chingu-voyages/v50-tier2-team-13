@@ -1,56 +1,62 @@
-import MenuItem from "@/components/MenuItem";
+'use client'
 
-export default async function Home() {
+import dynamic from "next/dynamic";
+import Navbar from "@/components/Navbar";
+import Menu from "@/components/Menu";
+import { useState, useEffect } from "react";
 
-  const res = await fetch('https://menus-api.vercel.app/');
-  const data = await res.json();
-  const pizzas = data.pizzas;
-  const burgers = data.burgers;
-  const desserts = data.desserts;
-  const drinks = data.drinks;
-  const sandwiches = data.sandwiches;
-  const bestFoods = data['best-foods'];
 
+export default  function Home({}) {
+  const Map = dynamic(() => import("../components/Map"), { ssr: false });
+
+  const [allMenuItems, setAllMenuItems] = useState([]);
+  const [currentMenuData, setCurrentMenuData] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggleMenu = () => {
+    setIsOpen(!isOpen);
+}
+  const handleOnClick = (restaurant) => {
+
+    const menuItems = allMenuItems.filter(
+      (item) => item.name === restaurant.name
+    );
+
+    setCurrentMenuData(menuItems);
+    menuItems.map((item) => {
+      console.log(`Current items: ${item.id}`);
+    });
+
+    handleToggleMenu();
+  };
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("https://menus-api.vercel.app/");
+      const data = await res.json();
+
+      const allItems = [
+        ...data.pizzas,
+        ...data.burgers,
+        ...data.desserts,
+        ...data.drinks,
+        ...data.sandwiches,
+        ...data.bbqs,
+      ];
+
+      setAllMenuItems(allItems);
+
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div>
-      <div>
-        {pizzas
-        .map((item) => (
-          <MenuItem key={item.id} item={item}/>
-        ))}
-      </div>
-      <div>
-        {burgers
-        .map((item) => (
-          <MenuItem key={item.id} item={item}/>
-        ))}
-      </div>
-      <div>
-        {desserts
-        .map((item) => (
-          <MenuItem key={item.id} item={item}/>
-        ))}
-      </div>
-      <div>
-        {drinks
-        .map((item) => (
-          <MenuItem key={item.id} item={item}/>
-        ))}
-      </div>
-      <div>
-        {sandwiches
-        .map((item) => (
-          <MenuItem key={item.id} item={item}/>
-        ))}
-      </div>
-      <div>
-        {bestFoods
-        .map((item) => (
-          <MenuItem key={item.id} item={item}/>
-        ))}  
-      </div>
-
+      <Navbar />
+      <Map allMenuItems={allMenuItems} handleOnClick={handleOnClick} />
+      <Menu currentMenuData={currentMenuData} isOpen={isOpen} handleToggleMenu={handleToggleMenu} />
     </div>
   );
 }

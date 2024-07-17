@@ -14,7 +14,7 @@ const MenuItem = ({ item }) => {
         <h4>£{item.price}</h4>
       </div>
 
-      <div class="menu-item-button">
+      <div className="menu-item-button">
         <button>+</button>
       </div>
     </div>
