@@ -1,101 +1,85 @@
 "use client";
 
 import "leaflet/dist/leaflet.css";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 
-const Map = ({resturants}) => {
+const Map = ({ allMenuItems, handleOnClick }) => {
 
+    const bounds = [
+      [-85, -180],
+      [85, 180],
+    ];
 
+    const [restaurants, setRestaurants] = useState([]);
 
-const [restaurants, setRestaurants] = useState([]);
+    useEffect(() => {
 
+        const uniqueLocations = new Set();
 
-useEffect(() => {
-
-    const fetchData = async () => {
-      const res = await fetch('https://menus-api.vercel.app/');
-      const data = await res.json();
-
-      const pizzas = data.pizzas;
-      const burgers = data.burgers;
-      const desserts = data.desserts;
-      const drinks = data.drinks;
-      const sandwiches = data.sandwiches;
-      const bestFoods = data['best-foods'];
-
-      const allItems = [
-        ...data.pizzas,
-        ...data.burgers,
-        ...data.desserts,
-        ...data.drinks,
-        ...data.sandwiches,
-        ...data['best-foods'],
-      ];
-
-      console.log('All Items Before Filter:', allItems);
-
-      const uniqueLocations = new Set();
-
-      const uniqueRestaurants = allItems.
-      filter(item => 
-        {
-        const { latitude, longitude } = item;
-        if (latitude == null || longitude == null) 
-            {
-                console.warn('Invalid location:', item);
+        const uniqueRestaurants = allMenuItems.filter((item) => {
+            const { latitude, longitude } = item;
+            if (latitude == null || longitude == null) {
+                console.warn("Invalid location:", item);
                 return false;
             }
-        const locationKey = `${latitude},${longitude}`;
-        if (uniqueLocations.has(locationKey)) {
-          return false;
-        }
-        uniqueLocations.add(locationKey);
-        return true;
-      });
+            const locationKey = `${latitude},${longitude}`;
+            if (uniqueLocations.has(locationKey)) {
+                return false;
+            }
+            uniqueLocations.add(locationKey);
+            return true;
+        });
 
-      setRestaurants(uniqueRestaurants);
+        setRestaurants(uniqueRestaurants);
 
-      console.log('All Items After Filter:', uniqueRestaurants);
+    }, [allMenuItems]);
 
-    };
-
-    fetchData();
-  }, []);
-
-
-
-var greenIcon = L.icon({
-    iconUrl: 'marker.png',
-    iconSize:     [38, 38],
-    iconAnchor:   [22, 94], 
-    popupAnchor:  [-3, -76] 
-});
+  var greenIcon = L.icon({
+    iconUrl: "marker.png",
+    iconSize: [38, 38],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76],
+  });
 
   return (
     <MapContainer
       className="map-container"
-      center={[52.505, -0.09]}
-      zoom={3}
+      center={[45.476833, -89.679495]}
+      zoom={2}
       scrollWheelZoom={true}
+      minZoom={2}
+      maxBounds={bounds}
+      maxBoundsViscosity={1.0}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-       {restaurants.map((restaurant) => (
+      {restaurants.map((restaurant) => (
         <Marker
-        key={restaurant.id}
+          key={restaurant.id}
           position={[restaurant.latitude, restaurant.longitude]}
           icon={greenIcon}
         >
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
-       ))}
+          <Popup>
+            {restaurant.name} <br />
+            {restaurant.country} <br />
+            <button
+              className="view-menu-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleOnClick(restaurant);
+              }}
+            >
+              View Menu
+            </button>
+          </Popup>
+        </Marker>
+      ))}
     </MapContainer>
   );
 };
+
 export default Map;
