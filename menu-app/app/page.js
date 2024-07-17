@@ -48,7 +48,7 @@ export default async function Home() {
         {bestFoods
         .map((item) => (
           <MenuItem key={item.id} item={item}/>
-        ))}
+        ))}  
       </div>
 
     </div>
