@@ -1,5 +1,6 @@
 import MenuItem from "@/components/MenuItem";
 import dynamic from "next/dynamic";
+import Navbar from "@/components/Navbar";
 
 export default async function Home() {
 
@@ -17,7 +18,9 @@ export default async function Home() {
 
   return (
     <div>
+      <Navbar/>
       <Map/>
+
       <div>
         {pizzas
         .map((item) => (
