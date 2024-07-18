@@ -144,6 +144,11 @@ h6 {
 
 .menu-box.open {
   height: 100%; 
+  overflow: auto;
+}
+
+.menu-container{
+  padding-bottom: 30px;
 }
 
 .close-btn{
@@ -151,8 +156,8 @@ h6 {
   top: 0; 
   background-color: black;
   border-radius: 50%;
-  width: 4em;
-  height: 4em;
+  width: 3em;
+  height: 3em;
   color: #E2E1E1;
   font-size: larger;
 }
