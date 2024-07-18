@@ -4,37 +4,33 @@ import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
-
 const Map = ({ allMenuItems, handleOnClick }) => {
+  const bounds = [
+    [-85, -180],
+    [85, 180],
+  ];
 
-    const bounds = [
-      [-85, -180],
-      [85, 180],
-    ];
+  const [restaurants, setRestaurants] = useState([]);
 
-    const [restaurants, setRestaurants] = useState([]);
+  useEffect(() => {
+    const uniqueLocations = new Set();
 
-    useEffect(() => {
+    const uniqueRestaurants = allMenuItems.filter((item) => {
+      const { latitude, longitude } = item;
+      if (latitude == null || longitude == null) {
+        console.warn("Invalid location:", item);
+        return false;
+      }
+      const locationKey = `${latitude},${longitude}`;
+      if (uniqueLocations.has(locationKey)) {
+        return false;
+      }
+      uniqueLocations.add(locationKey);
+      return true;
+    });
 
-        const uniqueLocations = new Set();
-
-        const uniqueRestaurants = allMenuItems.filter((item) => {
-            const { latitude, longitude } = item;
-            if (latitude == null || longitude == null) {
-                console.warn("Invalid location:", item);
-                return false;
-            }
-            const locationKey = `${latitude},${longitude}`;
-            if (uniqueLocations.has(locationKey)) {
-                return false;
-            }
-            uniqueLocations.add(locationKey);
-            return true;
-        });
-
-        setRestaurants(uniqueRestaurants);
-
-    }, [allMenuItems]);
+    setRestaurants(uniqueRestaurants);
+  }, [allMenuItems]);
 
   var greenIcon = L.icon({
     iconUrl: "marker.png",
@@ -54,8 +50,8 @@ const Map = ({ allMenuItems, handleOnClick }) => {
       maxBoundsViscosity={1.0}
     >
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
       />
       {restaurants.map((restaurant) => (
         <Marker

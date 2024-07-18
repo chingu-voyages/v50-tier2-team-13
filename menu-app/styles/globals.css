@@ -98,8 +98,9 @@ h6 {
   width: 90%;
   margin-right: auto;
   margin-left: auto;
-  justify-content: center;
-  border: 5px red solid
+  border-radius: 20px;
+  margin-top: 20px;
+
 }
 
 .view-menu-btn {
@@ -125,6 +126,23 @@ h6 {
   width: 100%;
   border-bottom: 1px solid var(--Neutral-200, #EBEBEB);
   background: #FFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.icon-box img{
+  width: 1.6em;
+  height: 1.6em;
+  padding: 0px 5px 5px 5px;
+}
+
+.icon-box{
+  margin-right: 10px;
+}
+
+.logo-box img{
+  padding: 0px 5px 5px 15px;
 }
 
 
@@ -144,6 +162,11 @@ h6 {
 
 .menu-box.open {
   height: 100%; 
+  overflow: auto;
+}
+
+.menu-container{
+  padding-bottom: 30px;
 }
 
 .close-btn{
@@ -151,8 +174,8 @@ h6 {
   top: 0; 
   background-color: black;
   border-radius: 50%;
-  width: 4em;
-  height: 4em;
+  width: 3em;
+  height: 3em;
   color: #E2E1E1;
   font-size: larger;
 }
