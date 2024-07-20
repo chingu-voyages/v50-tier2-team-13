@@ -7,7 +7,6 @@ body {
   overflow-x: hidden;
 }
 
-
 body {
   position: relative;
   background-color: white;
@@ -29,8 +28,8 @@ h6 {
 .menu-item-card {
   display: flex;
   border-radius: 8px;
-  border: 1px solid var(--Neutral-300, #E2E1E1);
-  background: var(--Neutral-0, #FFF);
+  border: 1px solid var(--Neutral-300, #e2e1e1);
+  background: var(--Neutral-0, #fff);
   width: 90%;
   height: 150px;
   margin-top: 20px;
@@ -45,7 +44,6 @@ h6 {
   min-width: 30%;
   display: flex;
   justify-content: center;
-
 }
 
 .menu-item-image-box img {
@@ -84,11 +82,10 @@ h6 {
   margin-bottom: 10px;
   margin-right: 10px;
   border-radius: 50%;
-  background-image: url('/plus.svg');
+  background-image: url("/plus.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-
 }
 
 /********** MAP **********/
@@ -100,51 +97,47 @@ h6 {
   margin-left: auto;
   border-radius: 20px;
   margin-top: 20px;
-
 }
 
 .view-menu-btn {
   border-radius: 6px;
   background: var(--Neutral-900, #161616);
-  color: #E2E1E1;
+  color: #e2e1e1;
   padding: 5px;
   margin-top: 2px;
   width: 100%;
-
 }
 
 .leaflet-popup-content-wrapper {
   background-color: #f9f9f9;
   border: 2px solid #333;
   border-radius: 10px;
-
 }
 
 /********** Navigation Bar **********/
 .nav-bar-container {
   height: 3.5em;
   width: 100%;
-  border-bottom: 1px solid var(--Neutral-200, #EBEBEB);
-  background: #FFF;
+  border-bottom: 1px solid var(--Neutral-200, #ebebeb);
+  background: #fff;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
 
-.icon-box img{
+.icon-box img {
   width: 1.6em;
   height: 1.6em;
   padding: 0px 5px 5px 5px;
 }
 
-.icon-box{
+.icon-box {
   margin-right: 10px;
 }
 
-.logo-box img{
+.logo-box img {
   padding: 0px 5px 5px 15px;
 }
-
 
 /********** Restaurant Menu Display **********/
 
@@ -153,7 +146,7 @@ h6 {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 0; 
+  height: 0;
   background: white;
   overflow: hidden;
   transition: height 0.3s ease-in-out;
@@ -161,28 +154,28 @@ h6 {
 }
 
 .menu-box.open {
-  height: 100%; 
+  height: 100%;
   overflow: auto;
 }
 
-.menu-container{
+.menu-container {
   padding-bottom: 30px;
 }
 
-.close-btn{
+.close-btn {
   position: absolute;
-  top: 0; 
+  top: 0;
   background-color: black;
   border-radius: 50%;
   width: 3em;
   height: 3em;
-  color: #E2E1E1;
+  color: #e2e1e1;
   font-size: larger;
 }
 
 .restaurant-info-box {
-  border-bottom: 1px solid var(--Neutral-300, #E2E1E1);
-  background: var(--Neutral-0, #FFF);
+  border-bottom: 1px solid var(--Neutral-300, #e2e1e1);
+  background: var(--Neutral-0, #fff);
   padding-bottom: 20px;
 }
 
@@ -196,7 +189,31 @@ h6 {
   margin-bottom: 20px;
 }
 
-
 .restaurant-title {
- padding-left: 20px;
+  padding-left: 20px;
+}
+
+/********** FOOTER**********/
+footer {
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  flex-wrap: nowrap;
+}
+
+.footer-slogan {
+  text-align: left;
+}
+.footer-nav {
+  text-align: right;
+  justify-content: space-between;
+}
+.details-below footer {
+}
+.db-main {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 0;
 }
