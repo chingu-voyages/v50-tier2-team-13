@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
 import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Menu from "@/components/Menu";
 import { useState, useEffect } from "react";
+import Footer from "@/components/Footer";
 
-
-export default  function Home({}) {
+export default function Home({}) {
   const Map = dynamic(() => import("../components/Map"), { ssr: false });
 
   const [allMenuItems, setAllMenuItems] = useState([]);
@@ -15,9 +15,8 @@ export default  function Home({}) {
 
   const handleToggleMenu = () => {
     setIsOpen(!isOpen);
-}
+  };
   const handleOnClick = (restaurant) => {
-
     const menuItems = allMenuItems.filter(
       (item) => item.name === restaurant.name
     );
@@ -29,7 +28,6 @@ export default  function Home({}) {
 
     handleToggleMenu();
   };
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +44,6 @@ export default  function Home({}) {
       ];
 
       setAllMenuItems(allItems);
-
     };
 
     fetchData();
@@ -56,7 +53,12 @@ export default  function Home({}) {
     <div>
       <Navbar />
       <Map allMenuItems={allMenuItems} handleOnClick={handleOnClick} />
-      <Menu currentMenuData={currentMenuData} isOpen={isOpen} handleToggleMenu={handleToggleMenu} />
+      <Menu
+        currentMenuData={currentMenuData}
+        isOpen={isOpen}
+        handleToggleMenu={handleToggleMenu}
+      />
+      <Footer />
     </div>
   );
 }
