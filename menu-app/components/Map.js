@@ -1,10 +1,10 @@
 "use client";
 
 import "leaflet/dist/leaflet.css";
-
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 const Map = ({ restaurants, handleOnClick }) => {
+
   const bounds = [
     [-85, -180],
     [85, 180],

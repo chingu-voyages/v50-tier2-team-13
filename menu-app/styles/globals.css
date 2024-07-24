@@ -123,7 +123,15 @@ h6 {
   margin-right: auto;
   margin-left: auto;
   border-radius: 20px;
-  margin-top: 20px;
+}
+
+.map-placeholder{
+  height: 40rem;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  border: solid blue 1px;
+  margin-bottom: 20px;
 }
 
 .view-menu-btn {
@@ -236,8 +244,7 @@ footer {
   text-align: right;
   justify-content: space-between;
 }
-.details-below footer {
-}
+
 .db-main {
   display: flex;
   flex-direction: row;

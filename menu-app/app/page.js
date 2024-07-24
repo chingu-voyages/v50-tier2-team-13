@@ -25,7 +25,6 @@ export default function Home({}) {
   const [allLocations, setAllLocations] = useState([]);
 
   const filterCategory = (category) => {
-    console.log(category);
     const locations = allLocations?.filter((item) => {
       const itemid = item.id;
       return category.some((cItem) => cItem.id === itemid);
@@ -109,12 +108,13 @@ export default function Home({}) {
 
 
 
-
   return (
     <div>
       <Navbar />
       <Categories pizzaMenuItems={pizzaMenuItems} burgerMenuItems={burgerMenuItems} dessertsMenuItems={dessertsMenuItems} drinksMenuItems={drinksMenuItems} sandwichesMenuItems={sandwichesMenuItems} popularMenuItems={popularMenuItems} filterCategory={filterCategory}/>
+      <div className="map-placeholder">
       <Map restaurants={restaurants} handleOnClick={handleOnClick} />
+      </div>
       <Menu
         currentMenuData={currentMenuData}
         isOpen={isOpen}
