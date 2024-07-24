@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Menu from "@/components/Menu";
 import { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
+import Categories from "@/components/Categories"
 
 export default function Home({}) {
   const Map = dynamic(() => import("../components/Map"), { ssr: false });
@@ -52,6 +53,7 @@ export default function Home({}) {
   return (
     <div>
       <Navbar />
+      <Categories/>
       <Map allMenuItems={allMenuItems} handleOnClick={handleOnClick} />
       <Menu
         currentMenuData={currentMenuData}
