@@ -230,7 +230,7 @@ h6 {
 
 /********** FOOTER**********/
 footer {
-  background-color: grey;
+  background-color: #f7f7f7;
   display: flex;
   flex-direction: column;
   padding: 5%;
@@ -242,7 +242,6 @@ footer {
 }
 .footer-nav {
   text-align: right;
-  justify-content: space-between;
 }
 
 .db-main {
