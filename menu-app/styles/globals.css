@@ -23,6 +23,33 @@ h6 {
   margin: 0;
 }
 
+/********** CATEGORIES SECTION **********/
+
+.categories-box{ 
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 10px;
+}
+
+.category-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: 80px;
+}
+
+.category-item img{
+
+  width: 50px;
+  height: 50px;
+}
+
 /********** MENU ITEMS **********/
 
 .menu-item-card {
@@ -96,7 +123,15 @@ h6 {
   margin-right: auto;
   margin-left: auto;
   border-radius: 20px;
-  margin-top: 20px;
+}
+
+.map-placeholder{
+  height: 40rem;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  border: solid blue 1px;
+  margin-bottom: 20px;
 }
 
 .view-menu-btn {
@@ -208,8 +243,7 @@ footer {
 .footer-nav {
   text-align: right;
 }
-.details-below footer {
-}
+
 .db-main {
   display: flex;
   flex-direction: row;
