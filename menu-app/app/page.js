@@ -7,11 +7,13 @@ import { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import Categories from "@/components/Categories";
 import PlaceOrder from "@/components/PlaceOrder";
-
+import Modal from "@/components/Modal";
 
 export default function Home({}) {
   const Map = dynamic(() => import("../components/Map"), { ssr: false });
-  const LoadCredit = dynamic(() => import('../components/LoadCredit'), { ssr: false });
+  const LoadCredit = dynamic(() => import("../components/LoadCredit"), {
+    ssr: false,
+  });
 
   const [allMenuItems, setAllMenuItems] = useState([]);
   const [pizzaMenuItems, setPizzaMenuItems] = useState([]);
@@ -56,7 +58,7 @@ export default function Home({}) {
 
   const handleOrderToggle = () => {
     setIsOrderOpen(!isOrderOpen);
-  }
+  };
 
   const handleOnClick = (restaurant) => {
     const menuItems = allMenuItems.filter(
@@ -136,12 +138,12 @@ export default function Home({}) {
     }
   }, [userCredit]);
 
-
   return (
     <div>
-      <Navbar 
-      handleCreditToggle={handleCreditToggle}
-      handleOrderToggle={handleOrderToggle} />
+      <Navbar
+        handleCreditToggle={handleCreditToggle}
+        handleOrderToggle={handleOrderToggle}
+      />
 
       <Categories
         pizzaMenuItems={pizzaMenuItems}
@@ -168,8 +170,10 @@ export default function Home({}) {
         handleCreditToggle={handleCreditToggle}
       />
       <PlaceOrder
-      handleOrderToggle={handleOrderToggle}
-      isOrderOpen={isOrderOpen}/>
+        handleOrderToggle={handleOrderToggle}
+        isOrderOpen={isOrderOpen}
+      />
+      
       <Footer />
     </div>
   );
