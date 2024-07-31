@@ -31,6 +31,8 @@ export default function Home({}) {
     return savedCredit !== null ? parseInt(savedCredit, 10) : 0;
   });
 
+const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"]
+
   const loadUserCredit = (credit) => {
     setUserCredit(prevFunds => prevFunds + credit);
   }
@@ -138,7 +140,7 @@ export default function Home({}) {
         isOpen={isOpen}
         handleToggleMenu={handleToggleMenu}
       />
-      <LoadCredit userCredit={userCredit} loadUserCredit={loadUserCredit} isActive={isActive} handleCreditToggle={handleCreditToggle}/>
+      <LoadCredit discountCodes={discountCodes} userCredit={userCredit} loadUserCredit={loadUserCredit} isActive={isActive} handleCreditToggle={handleCreditToggle}/>
       <Footer />
     </div>
   );

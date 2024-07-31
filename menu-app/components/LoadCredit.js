@@ -1,14 +1,40 @@
 import { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 
-const LoadCredit = ({isActive, handleCreditToggle, loadUserCredit, userCredit}) => {
+const LoadCredit = ({isActive, handleCreditToggle, loadUserCredit, userCredit, discountCodes}) => {
 
     const [fundsAvailable, setFundsAvailable] =  useState(userCredit);
+    const [addedValue, setAddedValue] = useState(0);
+
+    const handleInputChange = (e) => {
+        setCode(e.target.value); 
+      };
+
+    const [code, setCode] = useState('');
+
+    const [error, showError] = useState (false);
+    const [success, showSuccess] = useState (false);
 
     const handleOnSubmit = (e) => {
+        let validCode = false;
         e.preventDefault();
-        loadUserCredit(10);
-        setFundsAvailable(prevFunds => prevFunds + 10);
+        discountCodes.map((item) => {
+            if (code.toLocaleLowerCase() === item){
+                const value = parseInt(code.slice(-2));
+                loadUserCredit(value);
+                setFundsAvailable(prevFunds => prevFunds + value);
+                validCode = true;
+                setAddedValue(value);
+
+            }
+        })
+
+        if (validCode) {
+            showError(false); 
+            showSuccess(true);
+        } else {
+            showError(true); 
+        }
     }
 
 
@@ -31,7 +57,13 @@ const LoadCredit = ({isActive, handleCreditToggle, loadUserCredit, userCredit}) 
                     <h3>Add Credit</h3>
                     <p>Enter a gift code</p>
                 </div>
-                <input required type="text" placeholder="0000-0000-00"></input>
+                <input value={code} onChange={handleInputChange} required type="text" placeholder="0000-0000-00"></input>
+                <div className={`error${error?"open" : ""}`}>
+                    <h5 className="error-txt">Invalid Discount Code</h5>
+                </div>
+                <div className={`success${success?"open" : ""}`}>
+                <h5 className="success-txt">£{addedValue} Easy Money Added</h5>
+                </div>
                 <div className="button-box">
                 <button type="submit">Add</button>
             </div>

@@ -369,3 +369,28 @@ font-weight: 700;
   display: flex;
   align-items: center;
 }
+
+
+.error{
+visibility: hidden;
+}
+
+.error.open{
+  visibility: visible;
+}
+
+.error-txt{
+  color: red;
+}
+
+.success{
+  visibility: hidden;
+  }
+  
+  .success.open{
+    visibility: visible;
+  }
+  
+  .success-txt{
+    color: green;
+  }
