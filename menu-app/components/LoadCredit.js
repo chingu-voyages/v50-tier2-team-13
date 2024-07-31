@@ -40,7 +40,7 @@ const LoadCredit = ({isActive, handleCreditToggle, loadUserCredit, userCredit, d
 
 
     return(
-        <div className={`load-credit-container ${isActive ? 'open' : ""} `}>
+        <div className={`load-credit-container ${isActive ? "open" : ""}`}>
             <div className="go-back">
             <IoIosArrowBack className="back-arrow" onClick={handleCreditToggle} />
             <p>Back</p>
