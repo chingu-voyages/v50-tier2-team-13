@@ -5,7 +5,8 @@ import Navbar from "@/components/Navbar";
 import Menu from "@/components/Menu";
 import { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
-import Categories from "@/components/Categories"
+import Categories from "@/components/Categories";
+import LoadCredit from "@/components/LoadCredit";
 
 export default function Home({}) {
   const Map = dynamic(() => import("../components/Map"), { ssr: false });
@@ -20,9 +21,22 @@ export default function Home({}) {
 
   const [currentMenuData, setCurrentMenuData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   const [restaurants, setRestaurants] = useState([]);
   const [allLocations, setAllLocations] = useState([]);
+
+  const [userCredit, setUserCredit] = useState(() => {
+
+      const savedCredit = sessionStorage.getItem("userCredit");
+      return savedCredit !== null ? parseInt(savedCredit, 10) : 0;
+  });
+
+  const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"];
+
+  const loadUserCredit = (credit) => {
+    setUserCredit((prevFunds) => prevFunds + credit);
+  };
 
   const filterCategory = (category) => {
     const locations = allLocations?.filter((item) => {
@@ -30,6 +44,10 @@ export default function Home({}) {
       return category.some((cItem) => cItem.id === itemid);
     });
     setRestaurants(locations);
+  };
+
+  const handleCreditToggle = () => {
+    setIsActive(!isActive);
   };
 
   const handleToggleMenu = () => {
@@ -42,9 +60,7 @@ export default function Home({}) {
     );
 
     setCurrentMenuData(menuItems);
-    menuItems.map((item) => {
-      console.log(`Current items: ${item.id}`);
-    });
+    menuItems.map((item) => {});
 
     handleToggleMenu();
   };
@@ -75,8 +91,6 @@ export default function Home({}) {
       const res = await fetch("https://menus-api.vercel.app/");
       const data = await res.json();
 
-      console.log("data:" , data)
-
       const allItems = [
         ...data.pizzas,
         ...data.burgers,
@@ -84,9 +98,8 @@ export default function Home({}) {
         ...data.drinks,
         ...data.sandwiches,
         ...data.bbqs,
-        ...data['best-foods'],
+        ...data["best-foods"],
       ];
-      console.log("All Items" , allItems);
 
       setAllMenuItems(allItems);
       setPizzaMenuItems(data.pizzas);
@@ -94,7 +107,7 @@ export default function Home({}) {
       setDessertsMenuItems(data.desserts);
       setDrinksMenuItems(data.drinks);
       setSandwichesMenuItems(data.sandwiches);
-      setPopularMenuItems(data['best-foods']);
+      setPopularMenuItems(data["best-foods"]);
     };
 
     fetchData();
@@ -106,19 +119,37 @@ export default function Home({}) {
     }
   }, [allMenuItems]);
 
+  useEffect(() => {
 
+      sessionStorage.setItem("userCredit", userCredit);
+  }, [userCredit]);
 
   return (
     <div>
-      <Navbar />
-      <Categories pizzaMenuItems={pizzaMenuItems} burgerMenuItems={burgerMenuItems} dessertsMenuItems={dessertsMenuItems} drinksMenuItems={drinksMenuItems} sandwichesMenuItems={sandwichesMenuItems} popularMenuItems={popularMenuItems} filterCategory={filterCategory}/>
+      <Navbar handleCreditToggle={handleCreditToggle} />
+      <Categories
+        pizzaMenuItems={pizzaMenuItems}
+        burgerMenuItems={burgerMenuItems}
+        dessertsMenuItems={dessertsMenuItems}
+        drinksMenuItems={drinksMenuItems}
+        sandwichesMenuItems={sandwichesMenuItems}
+        popularMenuItems={popularMenuItems}
+        filterCategory={filterCategory}
+      />
       <div className="map-placeholder">
-      <Map restaurants={restaurants} handleOnClick={handleOnClick} />
+        <Map restaurants={restaurants} handleOnClick={handleOnClick} />
       </div>
       <Menu
         currentMenuData={currentMenuData}
         isOpen={isOpen}
         handleToggleMenu={handleToggleMenu}
+      />
+      <LoadCredit
+        discountCodes={discountCodes}
+        userCredit={userCredit}
+        loadUserCredit={loadUserCredit}
+        isActive={isActive}
+        handleCreditToggle={handleCreditToggle}
       />
       <Footer />
     </div>
