@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Menu from "@/components/Menu";
 import { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
-import Categories from "@/components/Categories"
+import Categories from "@/components/Categories";
 import LoadCredit from "@/components/LoadCredit";
 
 export default function Home({}) {
@@ -27,15 +27,16 @@ export default function Home({}) {
   const [allLocations, setAllLocations] = useState([]);
 
   const [userCredit, setUserCredit] = useState(() => {
-    const savedCredit = localStorage.getItem('userCredit');
-    return savedCredit !== null ? parseInt(savedCredit, 10) : 0;
+
+      const savedCredit = sessionStorage.getItem("userCredit");
+      return savedCredit !== null ? parseInt(savedCredit, 10) : 0;
   });
 
-const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"]
+  const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"];
 
   const loadUserCredit = (credit) => {
-    setUserCredit(prevFunds => prevFunds + credit);
-  }
+    setUserCredit((prevFunds) => prevFunds + credit);
+  };
 
   const filterCategory = (category) => {
     const locations = allLocations?.filter((item) => {
@@ -46,9 +47,8 @@ const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"]
   };
 
   const handleCreditToggle = () => {
-    console.log("clicked")
     setIsActive(!isActive);
-  }
+  };
 
   const handleToggleMenu = () => {
     setIsOpen(!isOpen);
@@ -60,9 +60,7 @@ const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"]
     );
 
     setCurrentMenuData(menuItems);
-    menuItems.map((item) => {
-      console.log(`Current items: ${item.id}`);
-    });
+    menuItems.map((item) => {});
 
     handleToggleMenu();
   };
@@ -93,8 +91,6 @@ const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"]
       const res = await fetch("https://menus-api.vercel.app/");
       const data = await res.json();
 
-      console.log("data:" , data)
-
       const allItems = [
         ...data.pizzas,
         ...data.burgers,
@@ -102,9 +98,8 @@ const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"]
         ...data.drinks,
         ...data.sandwiches,
         ...data.bbqs,
-        ...data['best-foods'],
+        ...data["best-foods"],
       ];
-      console.log("All Items" , allItems);
 
       setAllMenuItems(allItems);
       setPizzaMenuItems(data.pizzas);
@@ -112,7 +107,7 @@ const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"]
       setDessertsMenuItems(data.desserts);
       setDrinksMenuItems(data.drinks);
       setSandwichesMenuItems(data.sandwiches);
-      setPopularMenuItems(data['best-foods']);
+      setPopularMenuItems(data["best-foods"]);
     };
 
     fetchData();
@@ -125,22 +120,37 @@ const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"]
   }, [allMenuItems]);
 
   useEffect(() => {
-    localStorage.setItem('userCredit', userCredit);
+
+      sessionStorage.setItem("userCredit", userCredit);
   }, [userCredit]);
 
   return (
     <div>
       <Navbar handleCreditToggle={handleCreditToggle} />
-      <Categories pizzaMenuItems={pizzaMenuItems} burgerMenuItems={burgerMenuItems} dessertsMenuItems={dessertsMenuItems} drinksMenuItems={drinksMenuItems} sandwichesMenuItems={sandwichesMenuItems} popularMenuItems={popularMenuItems} filterCategory={filterCategory}/>
+      <Categories
+        pizzaMenuItems={pizzaMenuItems}
+        burgerMenuItems={burgerMenuItems}
+        dessertsMenuItems={dessertsMenuItems}
+        drinksMenuItems={drinksMenuItems}
+        sandwichesMenuItems={sandwichesMenuItems}
+        popularMenuItems={popularMenuItems}
+        filterCategory={filterCategory}
+      />
       <div className="map-placeholder">
-      <Map restaurants={restaurants} handleOnClick={handleOnClick} />
+        <Map restaurants={restaurants} handleOnClick={handleOnClick} />
       </div>
       <Menu
         currentMenuData={currentMenuData}
         isOpen={isOpen}
         handleToggleMenu={handleToggleMenu}
       />
-      <LoadCredit discountCodes={discountCodes} userCredit={userCredit} loadUserCredit={loadUserCredit} isActive={isActive} handleCreditToggle={handleCreditToggle}/>
+      <LoadCredit
+        discountCodes={discountCodes}
+        userCredit={userCredit}
+        loadUserCredit={loadUserCredit}
+        isActive={isActive}
+        handleCreditToggle={handleCreditToggle}
+      />
       <Footer />
     </div>
   );
