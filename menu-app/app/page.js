@@ -26,7 +26,10 @@ export default function Home({}) {
   const [restaurants, setRestaurants] = useState([]);
   const [allLocations, setAllLocations] = useState([]);
 
-  const [userCredit, setUserCredit] = useState(0);
+  const [userCredit, setUserCredit] = useState(() => {
+    const savedCredit = localStorage.getItem('userCredit');
+    return savedCredit !== null ? parseInt(savedCredit, 10) : 0;
+  });
 
   const loadUserCredit = (credit) => {
     setUserCredit(prevFunds => prevFunds + credit);
@@ -119,7 +122,9 @@ export default function Home({}) {
     }
   }, [allMenuItems]);
 
-
+  useEffect(() => {
+    localStorage.setItem('userCredit', userCredit);
+  }, [userCredit]);
 
   return (
     <div>
@@ -133,7 +138,7 @@ export default function Home({}) {
         isOpen={isOpen}
         handleToggleMenu={handleToggleMenu}
       />
-      <LoadCredit loadUserCredit={loadUserCredit} isActive={isActive} handleCreditToggle={handleCreditToggle}/>
+      <LoadCredit userCredit={userCredit} loadUserCredit={loadUserCredit} isActive={isActive} handleCreditToggle={handleCreditToggle}/>
       <Footer />
     </div>
   );

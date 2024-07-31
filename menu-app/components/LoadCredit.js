@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 
-const LoadCredit = ({isActive, handleCreditToggle, loadUserCredit}) => {
+const LoadCredit = ({isActive, handleCreditToggle, loadUserCredit, userCredit}) => {
 
-    const [fundsAvailable, setFundsAvailable] =  useState(0.00);
+    const [fundsAvailable, setFundsAvailable] =  useState(userCredit);
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
