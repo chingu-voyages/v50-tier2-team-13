@@ -277,7 +277,6 @@ footer {
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .load-credit-container.open{
@@ -300,7 +299,6 @@ border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
   width: 300px;
-  margin-top: -110px;
 }
 
 .card-container{
@@ -339,13 +337,14 @@ border-radius: 10px;
 .load-credit-container .button-box button{
 
   background-color: #161616;
-  width: 80%;
+  width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 10px;
   color: white;
   font-size: 1em;
   max-width: 300px;
+  margin-top: 100px;
 }
 
 .funds-box {

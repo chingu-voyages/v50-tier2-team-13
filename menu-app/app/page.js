@@ -26,6 +26,12 @@ export default function Home({}) {
   const [restaurants, setRestaurants] = useState([]);
   const [allLocations, setAllLocations] = useState([]);
 
+  const [userCredit, setUserCredit] = useState(0);
+
+  const loadUserCredit = (credit) => {
+    setUserCredit(prevFunds => prevFunds + credit);
+  }
+
   const filterCategory = (category) => {
     const locations = allLocations?.filter((item) => {
       const itemid = item.id;
@@ -127,7 +133,7 @@ export default function Home({}) {
         isOpen={isOpen}
         handleToggleMenu={handleToggleMenu}
       />
-      <LoadCredit isActive={isActive} handleCreditToggle={handleCreditToggle}/>
+      <LoadCredit loadUserCredit={loadUserCredit} isActive={isActive} handleCreditToggle={handleCreditToggle}/>
       <Footer />
     </div>
   );
