@@ -6,6 +6,7 @@ import Menu from "@/components/Menu";
 import { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import Categories from "@/components/Categories"
+import LoadCredit from "@/components/LoadCredit";
 
 export default function Home({}) {
   const Map = dynamic(() => import("../components/Map"), { ssr: false });
@@ -20,6 +21,7 @@ export default function Home({}) {
 
   const [currentMenuData, setCurrentMenuData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   const [restaurants, setRestaurants] = useState([]);
   const [allLocations, setAllLocations] = useState([]);
@@ -31,6 +33,11 @@ export default function Home({}) {
     });
     setRestaurants(locations);
   };
+
+  const handleCreditToggle = () => {
+    console.log("clicked")
+    setIsActive(!isActive);
+  }
 
   const handleToggleMenu = () => {
     setIsOpen(!isOpen);
@@ -110,7 +117,7 @@ export default function Home({}) {
 
   return (
     <div>
-      <Navbar />
+      <Navbar handleCreditToggle={handleCreditToggle} />
       <Categories pizzaMenuItems={pizzaMenuItems} burgerMenuItems={burgerMenuItems} dessertsMenuItems={dessertsMenuItems} drinksMenuItems={drinksMenuItems} sandwichesMenuItems={sandwichesMenuItems} popularMenuItems={popularMenuItems} filterCategory={filterCategory}/>
       <div className="map-placeholder">
       <Map restaurants={restaurants} handleOnClick={handleOnClick} />
@@ -120,6 +127,7 @@ export default function Home({}) {
         isOpen={isOpen}
         handleToggleMenu={handleToggleMenu}
       />
+      <LoadCredit isActive={isActive} handleCreditToggle={handleCreditToggle}/>
       <Footer />
     </div>
   );

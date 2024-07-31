@@ -1,6 +1,7 @@
 "use client";
 
 import MenuItem from "./MenuItem";
+import { IoIosArrowBack } from "react-icons/io";
 
 const Menu = ({ currentMenuData, isOpen, handleToggleMenu  }) => {
   const restaurantName =
@@ -11,15 +12,13 @@ const Menu = ({ currentMenuData, isOpen, handleToggleMenu  }) => {
     currentMenuData.length > 0 ? currentMenuData[0].country : "";
 
   return (
-    <div className={`menu-box ${isOpen ? 'open' : ''}`}>
-
-        <button className="close-btn" onClick={handleToggleMenu}>
-            X
-        </button>
-
+    <div className={`menu-box ${isOpen ? "open" : ""}`}>
+      <div className="go-back">
+        <IoIosArrowBack className="back-arrow" onClick={handleToggleMenu} />
+        <p>Back</p>
+      </div>
       <div className="restaurant-info-box">
         <div className="restaurant-image">
-
           <img src={restaurantImage} />
         </div>
 

@@ -23,6 +23,14 @@ h6 {
   margin: 0;
 }
 
+.back-arrow{
+  width: 25px;
+  height: 25px;
+  padding: 15px 0px 15px 15px; 
+  z-index: 9999;
+
+}
+
 /********** CATEGORIES SECTION **********/
 
 .categories-box{ 
@@ -249,4 +257,116 @@ footer {
   flex-direction: row;
   gap: 20px;
   padding: 0;
+}
+
+
+
+/**********LOAD CREDIT**********/
+
+.load-credit-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  border: solid black 1px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1000;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.load-credit-container.open{
+  height: 100%;
+  overflow: auto;
+
+}
+
+.load-credit-container img{
+margin-top: 30px;
+object-fit: cover;
+width: 100%;
+height: 100%;
+border-radius: 10px;
+}
+
+.load-credit-container form {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  margin-top: -110px;
+}
+
+.card-container{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 60px;
+  width: 300px;
+
+}
+
+.text-container p{
+  margin-bottom: 0px;
+}
+
+.load-credit-container input {
+  margin-bottom: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.load-credit-container .button-box{
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.load-credit-container .button-box button{
+
+  background-color: #161616;
+  width: 80%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  color: white;
+  font-size: 1em;
+  max-width: 300px;
+}
+
+.funds-box {
+  position: absolute;
+  top: 35%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+
+.funds-box h5 {
+margin-bottom: 5px;
+font-size: 1.3em;
+}
+
+.go-back p {
+margin: 0;
+padding-bottom: 2px;
+font-weight: 700;
+}
+
+.go-back {
+  display: flex;
+  align-items: center;
 }
