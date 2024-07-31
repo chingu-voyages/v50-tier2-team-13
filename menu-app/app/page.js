@@ -6,10 +6,11 @@ import Menu from "@/components/Menu";
 import { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import Categories from "@/components/Categories";
-import LoadCredit from "@/components/LoadCredit";
+
 
 export default function Home({}) {
   const Map = dynamic(() => import("../components/Map"), { ssr: false });
+  const LoadCredit = dynamic(() => import('@/components/LoadCredit'), { ssr: false });
 
   const [allMenuItems, setAllMenuItems] = useState([]);
   const [pizzaMenuItems, setPizzaMenuItems] = useState([]);
@@ -26,11 +27,7 @@ export default function Home({}) {
   const [restaurants, setRestaurants] = useState([]);
   const [allLocations, setAllLocations] = useState([]);
 
-  const [userCredit, setUserCredit] = useState(() => {
-
-      const savedCredit = sessionStorage.getItem("userCredit");
-      return savedCredit !== null ? parseInt(savedCredit, 10) : 0;
-  });
+  const [userCredit, setUserCredit] = useState(null);
 
   const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"];
 
@@ -120,9 +117,18 @@ export default function Home({}) {
   }, [allMenuItems]);
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedCredit = localStorage.getItem("userCredit");
+      setUserCredit(savedCredit !== null ? parseInt(savedCredit, 10) : 0);
+    }
+  }, []);
 
-      sessionStorage.setItem("userCredit", userCredit);
+  useEffect(() => {
+    if (userCredit !== null && typeof window !== "undefined") {
+      localStorage.setItem("userCredit", userCredit);
+    }
   }, [userCredit]);
+
 
   return (
     <div>

@@ -3,7 +3,7 @@ import { IoIosArrowBack } from "react-icons/io";
 
 const LoadCredit = ({isActive, handleCreditToggle, loadUserCredit, userCredit, discountCodes}) => {
 
-    const [fundsAvailable, setFundsAvailable] =  useState(userCredit);
+    const [fundsAvailable, setFundsAvailable] = useState(userCredit !== null ? userCredit : 0);
     const [addedValue, setAddedValue] = useState(0);
 
     const handleInputChange = (e) => {
