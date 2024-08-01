@@ -6,10 +6,14 @@ export default function Modal({ setShowModal, modalItem }) {
     <div className="modal-overlay">
       <div className="modal-container">
         <button onClick={() => setShowModal(false)}>Close</button>
-        <img src={modalItem.img} alt={modalItem.id} />
-
         <div className="model-content">
-          <p>This where modal will be</p>
+          <div className="modal-item-image-box">
+            <img src={modalItem.img} alt={modalItem.id} />
+          </div>
+          <div className="modal-item-info-box">
+            <h3>{modalItem.dsc}</h3>
+            <h4>£{modalItem.price}</h4>
+          </div>
         </div>
       </div>
     </div>
