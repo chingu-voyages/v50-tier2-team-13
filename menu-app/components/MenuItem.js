@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
+import CheckOutItem from "./CheckoutItem";
 
-const MenuItem = ({ item }) => {
+const MenuItem = ({ item, AddItemToOrder }) => {
+
   return (
     <div className="menu-item-card">
       <div className="menu-item-image-box">
@@ -15,10 +17,12 @@ const MenuItem = ({ item }) => {
       </div>
 
       <div className="menu-item-button">
-        <button>+</button>
+        <button onClick={(e) => {
+          e.preventDefault();
+          AddItemToOrder(item)}
+        }>+</button>
       </div>
     </div>
   );
 };
 export default MenuItem;
-//micaela test 2

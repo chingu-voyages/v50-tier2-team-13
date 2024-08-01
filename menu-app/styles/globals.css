@@ -510,3 +510,83 @@ visibility: hidden;
   margin-bottom: 50px;
 }
 
+.checkout-item-card {
+  display: grid;
+  grid-template-columns: auto 1fr; 
+  grid-template-rows: auto; 
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.checkout-item-image-box {
+  grid-column: 1; 
+  display: flex;
+  align-items: center;
+}
+
+.checkout-item-image-box img {
+  width: 100px; 
+  height: auto;
+  border-radius: 10px;
+}
+
+.checkout-item-info-button-container {
+  display: grid;
+  grid-column: 2; 
+  grid-template-rows: 1fr auto; 
+  gap: 25px;
+}
+
+.checkout-item-info-box {
+  grid-row: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.checkout-item-info-box h3 {
+  margin: 0;
+  font-size: 1em;
+}
+
+.checkout-item-info-box p {
+  margin: 5px 0 0;
+  color: #555;
+}
+
+.checkout-item-button {
+  grid-row: 2; 
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  justify-content: flex-end; 
+}
+
+.checkout-item-button button {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.minus-button {
+  background-color: #FFEC95; 
+}
+
+.plus-button {
+  background-color: #FFEC95; 
+}
+
+.checkout-item-button p {
+  margin: 0;
+  padding: 0 10px;
+  text-align: center;
+  font-size: 1.2em;
+}
