@@ -3,7 +3,12 @@
 import MenuItem from "./MenuItem";
 import { IoIosArrowBack } from "react-icons/io";
 
-const Menu = ({ currentMenuData, isOpen, handleToggleMenu  }) => {
+const Menu = ({
+  currentMenuData,
+  isOpen,
+  handleToggleMenu,
+  AddItemToOrder,
+}) => {
   const restaurantName =
     currentMenuData.length > 0 ? currentMenuData[0].name : "";
   const restaurantImage =
@@ -30,7 +35,13 @@ const Menu = ({ currentMenuData, isOpen, handleToggleMenu  }) => {
 
       <div className="menu-container">
         {currentMenuData && currentMenuData.length > 0 ? (
-          currentMenuData.map((item) => <MenuItem item={item}></MenuItem>)
+          currentMenuData.map((item) => (
+            <MenuItem
+              key={item.id}
+              AddItemToOrder={AddItemToOrder}
+              item={item}
+            />
+          ))
         ) : (
           <div></div>
         )}

@@ -2,8 +2,12 @@ import { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoLocationOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
+import CheckOutItem from "./CheckoutItem";
 
-const PlaceOrder = ({ handleOrderToggle, isOrderOpen }) => {
+const PlaceOrder = ({ handleOrderToggle, isOrderOpen, orderItems }) => {
+  const [orderSubTotal, setOrderSubTotal] = useState(0);
+  const [deliveryFee, setDeliveryFee] = useState(2.99);
+
   return (
     <div className={`place-order-container ${isOrderOpen ? "open" : ""}`}>
       <div className="go-back">
@@ -53,23 +57,31 @@ const PlaceOrder = ({ handleOrderToggle, isOrderOpen }) => {
         <div className="tip-title">
           <h3>Order Summary</h3>
         </div>
-        <div className="order-box"></div>
+        <div className="order-box">
+          {orderItems && orderItems.length > 0 ? (
+            orderItems.map((item) => (
+            <CheckOutItem 
+                item={item} />
+          )) 
+        ): (
+            <div></div>
+          )}
+        </div>
         <div className="order-totals">
           <div>
             <p>Subtotal</p>
-            <p>£0.00</p>
+            <p>£{orderSubTotal}</p>
           </div>
           <div>
             <p>Delivery</p>
-            <p>£0.00</p>
+            <p>£{deliveryFee}</p>
           </div>
         </div>
       </div>
 
       <div className="button-box">
-          <button>Pay</button>
-        </div>
-
+        <button>Pay</button>
+      </div>
     </div>
   );
 };

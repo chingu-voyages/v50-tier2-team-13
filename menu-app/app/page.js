@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import Categories from "@/components/Categories";
 import PlaceOrder from "@/components/PlaceOrder";
+import CheckOutItem from "@/components/CheckoutItem";
 
 
 export default function Home({}) {
@@ -33,6 +34,8 @@ export default function Home({}) {
   const [userCredit, setUserCredit] = useState(null);
 
   const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"];
+
+  const [orderItems, setOrderItems] = useState([]);
 
   const loadUserCredit = (credit) => {
     setUserCredit((prevFunds) => prevFunds + credit);
@@ -89,6 +92,18 @@ export default function Home({}) {
     setRestaurants(uniqueRestaurants);
     setAllLocations(uniqueRestaurants);
   };
+
+  const AddItemToOrder = (item) => {
+    console.log("clicked:", item);
+    console.log("ORDER:", orderItems);
+  
+    if (orderItems?.length < 1) {
+      setOrderItems([item]); 
+    } else {
+      setOrderItems(prevItems => [...prevItems, item]);
+    }
+  };
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -159,6 +174,7 @@ export default function Home({}) {
         currentMenuData={currentMenuData}
         isOpen={isOpen}
         handleToggleMenu={handleToggleMenu}
+        AddItemToOrder={AddItemToOrder}
       />
       <LoadCredit
         discountCodes={discountCodes}
@@ -169,7 +185,9 @@ export default function Home({}) {
       />
       <PlaceOrder
       handleOrderToggle={handleOrderToggle}
-      isOrderOpen={isOrderOpen}/>
+      isOrderOpen={isOrderOpen}
+      orderItems={orderItems}/>
+
       <Footer />
     </div>
   );
