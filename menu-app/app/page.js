@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import Categories from "@/components/Categories";
 import PlaceOrder from "@/components/PlaceOrder";
-import CheckOutItem from "@/components/CheckoutItem";
 
 
 export default function Home({}) {
@@ -36,6 +35,7 @@ export default function Home({}) {
   const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"];
 
   const [orderItems, setOrderItems] = useState([]);
+  const [orderSubTotal, setOrderSubTotal] = useState(0);
 
   const loadUserCredit = (credit) => {
     setUserCredit((prevFunds) => prevFunds + credit);
@@ -93,17 +93,59 @@ export default function Home({}) {
     setAllLocations(uniqueRestaurants);
   };
 
-  const AddItemToOrder = (item) => {
-    console.log("clicked:", item);
-    console.log("ORDER:", orderItems);
-  
-    if (orderItems?.length < 1) {
-      setOrderItems([item]); 
-    } else {
-      setOrderItems(prevItems => [...prevItems, item]);
+  const calculateSubtotal = (order) => {
+    let total = 0;
+    if (order?.length > 0) {
+      order.forEach((item) => {
+        total += (item.price * item.quantity);
+      });
     }
+    setOrderSubTotal(total);
   };
+
+  const AddItemToOrder = (item) => {
+    setOrderItems((prevItems) => {
+      const existingItemIndex = prevItems.findIndex(i => i.id === item.id);
   
+      if (existingItemIndex >= 0) {
+        const updatedItems = [...prevItems];
+        const currentQuantity = updatedItems[existingItemIndex].quantity || 0;
+        updatedItems[existingItemIndex] = {
+          ...updatedItems[existingItemIndex],
+          quantity: currentQuantity + 1,
+        };
+        calculateSubtotal(updatedItems);
+        return updatedItems;
+      } else {
+        const updatedItems = [...prevItems, { ...item, quantity: 1 }];
+        calculateSubtotal(updatedItems);
+        return updatedItems;
+      }
+    });
+  };
+
+  const RemoveItemFromOrder = (item) => {
+    setOrderItems((prevItems) => {
+      const existingItemIndex = prevItems.findIndex(i => i.id === item.id);
+  
+      if (existingItemIndex >= 0) {
+        const updatedItems = [...prevItems];
+        const currentQuantity = updatedItems[existingItemIndex].quantity || 1;
+  
+        if (currentQuantity > 1) {
+          updatedItems[existingItemIndex] = {
+            ...updatedItems[existingItemIndex],
+            quantity: currentQuantity - 1,
+          };
+        } else {
+          updatedItems.splice(existingItemIndex, 1);
+        }
+        calculateSubtotal(updatedItems);
+        return updatedItems;
+      }
+      return prevItems;
+    });
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -186,7 +228,10 @@ export default function Home({}) {
       <PlaceOrder
       handleOrderToggle={handleOrderToggle}
       isOrderOpen={isOrderOpen}
-      orderItems={orderItems}/>
+      orderItems={orderItems}
+      AddItemToOrder={AddItemToOrder}
+      RemoveItemFromOrder={RemoveItemFromOrder}
+      orderSubTotal={orderSubTotal}/>
 
       <Footer />
     </div>

@@ -4,8 +4,8 @@ import { IoLocationOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import CheckOutItem from "./CheckoutItem";
 
-const PlaceOrder = ({ handleOrderToggle, isOrderOpen, orderItems }) => {
-  const [orderSubTotal, setOrderSubTotal] = useState(0);
+const PlaceOrder = ({ handleOrderToggle, isOrderOpen, orderItems, orderSubTotal, AddItemToOrder, RemoveItemFromOrder }) => {
+
   const [deliveryFee, setDeliveryFee] = useState(2.99);
 
   return (
@@ -61,6 +61,8 @@ const PlaceOrder = ({ handleOrderToggle, isOrderOpen, orderItems }) => {
           {orderItems && orderItems.length > 0 ? (
             orderItems.map((item) => (
             <CheckOutItem 
+                AddItemToOrder={AddItemToOrder}
+                RemoveItemFromOrder={RemoveItemFromOrder}
                 item={item} />
           )) 
         ): (

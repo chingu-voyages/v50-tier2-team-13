@@ -1,6 +1,6 @@
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-const CheckOutItem = ({ item }) => {
+const CheckOutItem = ({ item, AddItemToOrder, RemoveItemFromOrder }) => {
   return (
     <div className="checkout-item-card">
       <div className="checkout-item-image-box">
@@ -12,9 +12,25 @@ const CheckOutItem = ({ item }) => {
           <p>£{item.price}</p>
         </div>
         <div className="checkout-item-button">
-          <button className="minus-button"><FaMinus /></button>
-          <p>1</p>
-          <button className="plus-button"><FaPlus /></button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              RemoveItemFromOrder(item);
+            }}
+            className="minus-button"
+          >
+            <FaMinus />
+          </button>
+          <p>{item.quantity}</p>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              AddItemToOrder(item);
+            }}
+            className="plus-button"
+          >
+            <FaPlus />
+          </button>
         </div>
       </div>
     </div>
