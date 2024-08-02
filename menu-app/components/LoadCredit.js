@@ -53,7 +53,7 @@ const LoadCredit = ({
         <div className="card-container">
           <div className="funds-box">
             <h5>Easy Money</h5>
-            <h2>£{fundsAvailable}.00</h2>
+            <h2>£{fundsAvailable}</h2>
           </div>
           <img src="/credit-blank.svg" alt="credit-card" />
         </div>

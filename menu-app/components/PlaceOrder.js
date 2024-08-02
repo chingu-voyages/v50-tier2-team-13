@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoLocationOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import CheckOutItem from "./CheckoutItem";
 
-const PlaceOrder = ({ handleOrderToggle, isOrderOpen, orderItems, orderSubTotal, AddItemToOrder, RemoveItemFromOrder }) => {
+const PlaceOrder = ({ handleOrderToggle, adjustCredit, isOrderOpen, orderItems, orderSubTotal, AddItemToOrder, RemoveItemFromOrder, userCredit }) => {
 
   const [deliveryFee, setDeliveryFee] = useState(2.99);
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    if (isOrderOpen) {
+      setError(false);
+      setSuccess(false);
+    }
+  }, [isOrderOpen]);
 
   return (
     <div className={`place-order-container ${isOrderOpen ? "open" : ""}`}>
@@ -78,11 +87,31 @@ const PlaceOrder = ({ handleOrderToggle, isOrderOpen, orderItems, orderSubTotal,
             <p>Delivery</p>
             <p>£{deliveryFee}</p>
           </div>
+          <div className={`error${error ? "open" : ""}`}>
+          <h5 className="error-txt">Insufficient Funds Available</h5>
+          </div>
+          <div className={`success${success ? "open" : ""}`}>
+          <h5 className="success-txt">Order Placed Successfully</h5>
+        </div>
         </div>
       </div>
 
       <div className="button-box">
-        <button>Pay</button>
+        <button
+        onClick={(e) => {
+          e.preventDefault();
+          let newTotal = orderSubTotal + deliveryFee;
+
+          if(adjustCredit(newTotal) === -1)
+          {
+            setError(true);
+          }
+          else{
+            setSuccess(true);
+          }
+          
+        }}
+        >Pay</button>
       </div>
     </div>
   );
