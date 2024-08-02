@@ -36,6 +36,9 @@ export default function Home({}) {
 
   const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"];
 
+  const [orderItems, setOrderItems] = useState([]);
+  const [orderSubTotal, setOrderSubTotal] = useState(0);
+
   const loadUserCredit = (credit) => {
     setUserCredit((prevFunds) => prevFunds + credit);
   };
@@ -90,6 +93,60 @@ export default function Home({}) {
 
     setRestaurants(uniqueRestaurants);
     setAllLocations(uniqueRestaurants);
+  };
+
+  const calculateSubtotal = (order) => {
+    let total = 0;
+    if (order?.length > 0) {
+      order.forEach((item) => {
+        total += (item.price * item.quantity);
+      });
+    }
+    setOrderSubTotal(total);
+  };
+
+  const AddItemToOrder = (item) => {
+    setOrderItems((prevItems) => {
+      const existingItemIndex = prevItems.findIndex(i => i.id === item.id);
+  
+      if (existingItemIndex >= 0) {
+        const updatedItems = [...prevItems];
+        const currentQuantity = updatedItems[existingItemIndex].quantity || 0;
+        updatedItems[existingItemIndex] = {
+          ...updatedItems[existingItemIndex],
+          quantity: currentQuantity + 1,
+        };
+        calculateSubtotal(updatedItems);
+        return updatedItems;
+      } else {
+        const updatedItems = [...prevItems, { ...item, quantity: 1 }];
+        calculateSubtotal(updatedItems);
+        return updatedItems;
+      }
+    });
+  };
+
+  const RemoveItemFromOrder = (item) => {
+    setOrderItems((prevItems) => {
+      const existingItemIndex = prevItems.findIndex(i => i.id === item.id);
+  
+      if (existingItemIndex >= 0) {
+        const updatedItems = [...prevItems];
+        const currentQuantity = updatedItems[existingItemIndex].quantity || 1;
+  
+        if (currentQuantity > 1) {
+          updatedItems[existingItemIndex] = {
+            ...updatedItems[existingItemIndex],
+            quantity: currentQuantity - 1,
+          };
+        } else {
+          updatedItems.splice(existingItemIndex, 1);
+        }
+        calculateSubtotal(updatedItems);
+        return updatedItems;
+      }
+      return prevItems;
+    });
   };
 
   useEffect(() => {
@@ -161,6 +218,7 @@ export default function Home({}) {
         currentMenuData={currentMenuData}
         isOpen={isOpen}
         handleToggleMenu={handleToggleMenu}
+        AddItemToOrder={AddItemToOrder}
       />
       <LoadCredit
         discountCodes={discountCodes}
@@ -170,10 +228,13 @@ export default function Home({}) {
         handleCreditToggle={handleCreditToggle}
       />
       <PlaceOrder
-        handleOrderToggle={handleOrderToggle}
-        isOrderOpen={isOrderOpen}
-      />
-      
+      handleOrderToggle={handleOrderToggle}
+      isOrderOpen={isOrderOpen}
+      orderItems={orderItems}
+      AddItemToOrder={AddItemToOrder}
+      RemoveItemFromOrder={RemoveItemFromOrder}
+      orderSubTotal={orderSubTotal}/>
+
       <Footer />
     </div>
   );
