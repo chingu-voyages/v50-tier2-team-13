@@ -25,7 +25,7 @@ const Map = ({ restaurants, handleOnClick }) => {
           center={[45.476833, -89.679495]}
           zoom={2}
           scrollWheelZoom={true}
-          minZoom={2}
+          minZoom={3}
           maxBounds={bounds}
           maxBoundsViscosity={1.0}
         >
