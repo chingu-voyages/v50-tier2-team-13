@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/globals.css";
 
-export default function Modal({ setShowModal, modalItem }) {
+export default function Modal({ setShowModal, modalItem, AddItemToOrder }) {
   return (
     <div className="modal-overlay">
       <div className="modal-container">
@@ -16,7 +16,11 @@ export default function Modal({ setShowModal, modalItem }) {
           </div>
           <hr></hr>
           <div className="modal-button">
-            <button>Add to Cart</button>
+            <button
+              onClick={(e) =>{ 
+                e.preventDefault();
+                AddItemToOrder(modalItem)}}
+                >Add to Cart</button>
           </div>
         </div>
       </div>

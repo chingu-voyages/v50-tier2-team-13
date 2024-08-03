@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import Categories from "@/components/Categories";
 import PlaceOrder from "@/components/PlaceOrder";
-import Modal from "@/components/Modal";
+
 
 export default function Home({}) {
   const Map = dynamic(() => import("../components/Map"), { ssr: false });
@@ -37,11 +37,27 @@ export default function Home({}) {
   const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"];
 
   const [orderItems, setOrderItems] = useState([]);
-  const [orderSubTotal, setOrderSubTotal] = useState(0);
+  const [orderSubTotal, setOrderSubTotal] = useState(0.00);
+  const [orderTotalAfterTipSelection, setOrderTotalAfterTipSelection] = useState(0.00);
 
-  const loadUserCredit = (credit) => {
-    setUserCredit((prevFunds) => prevFunds + credit);
+  const formatToTwoDecimalPlaces = (number) => {
+    return parseFloat(number.toFixed(2));
   };
+
+  const loadUserCredit = ((credit) => {
+    setUserCredit((prevFunds) => formatToTwoDecimalPlaces(prevFunds + credit));
+  });
+
+  const adjustCredit = (total) => {
+
+    if(userCredit - total > -1 ){
+      setUserCredit((prevFunds) => formatToTwoDecimalPlaces( prevFunds - total));
+    }
+    else {
+      return -1;
+    }
+
+  }
 
   const filterCategory = (category) => {
     const locations = allLocations?.filter((item) => {
@@ -149,6 +165,14 @@ export default function Home({}) {
     });
   };
 
+  const calculateTip = (tipValueInPercetange) => {
+    if(orderSubTotal > 0){
+      let valueToBeAdded = formatToTwoDecimalPlaces((orderSubTotal * tipValueInPercetange) / 100);
+      return valueToBeAdded;
+    }
+  }
+
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch("https://menus-api.vercel.app/");
@@ -229,6 +253,11 @@ export default function Home({}) {
       />
       <PlaceOrder
       handleOrderToggle={handleOrderToggle}
+      formatToTwoDecimalPlaces={formatToTwoDecimalPlaces}
+      calculateTip={calculateTip}
+      orderTotalAfterTipSelection={orderTotalAfterTipSelection}
+      userCredit={userCredit}
+      adjustCredit={adjustCredit}
       isOrderOpen={isOrderOpen}
       orderItems={orderItems}
       AddItemToOrder={AddItemToOrder}
