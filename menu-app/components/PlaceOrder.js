@@ -14,7 +14,7 @@ const PlaceOrder = ({
   AddItemToOrder,
   RemoveItemFromOrder,
   formatToTwoDecimalPlaces,
-  
+
 }) => {
   const [deliveryFee, setDeliveryFee] = useState(2.99);
   const [error, setError] = useState(false);

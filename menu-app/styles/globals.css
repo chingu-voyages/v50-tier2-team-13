@@ -23,6 +23,7 @@ h6 {
   margin: 0;
 }
 
+
 .back-arrow {
   width: 25px;
   height: 25px;
@@ -402,6 +403,11 @@ hr {
   max-width: 300px;
 }
 
+.button-box button:hover {
+ background-color: #454545;
+ color: white;
+}
+
 .funds-box {
   position: absolute;
   top: 35%;
@@ -539,6 +545,16 @@ hr {
   width: 18%;
   min-width: 55px;
   max-width: 175px;
+}
+
+.buttons-box button:hover{
+  background-color:#FFE77B;
+  color:#161616;
+}
+
+.buttons-box button:focus{
+  background-color: #161616;
+  color:white;
 }
 
 .summary-section {

@@ -263,8 +263,6 @@ export default function Home({}) {
       AddItemToOrder={AddItemToOrder}
       RemoveItemFromOrder={RemoveItemFromOrder}
       orderSubTotal={orderSubTotal}/>
-      
-
 
       <Footer />
     </div>
