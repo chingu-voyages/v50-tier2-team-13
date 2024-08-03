@@ -37,7 +37,8 @@ export default function Home({}) {
   const discountCodes = ["easy-eats10", "easy-eats20", "easy-eats30"];
 
   const [orderItems, setOrderItems] = useState([]);
-  const [orderSubTotal, setOrderSubTotal] = useState(0.00);7
+  const [orderSubTotal, setOrderSubTotal] = useState(0.00);
+  const [orderTotalAfterTipSelection, setOrderTotalAfterTipSelection] = useState(0.00);
 
   const formatToTwoDecimalPlaces = (number) => {
     return parseFloat(number.toFixed(2));
@@ -164,6 +165,14 @@ export default function Home({}) {
     });
   };
 
+  const calculateTip = (tipValueInPercetange) => {
+    if(orderSubTotal > 0){
+      let valueToBeAdded = formatToTwoDecimalPlaces((orderSubTotal * tipValueInPercetange) / 100);
+      return valueToBeAdded;
+    }
+  }
+
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch("https://menus-api.vercel.app/");
@@ -244,6 +253,9 @@ export default function Home({}) {
       />
       <PlaceOrder
       handleOrderToggle={handleOrderToggle}
+      formatToTwoDecimalPlaces={formatToTwoDecimalPlaces}
+      calculateTip={calculateTip}
+      orderTotalAfterTipSelection={orderTotalAfterTipSelection}
       userCredit={userCredit}
       adjustCredit={adjustCredit}
       isOrderOpen={isOrderOpen}
@@ -251,6 +263,8 @@ export default function Home({}) {
       AddItemToOrder={AddItemToOrder}
       RemoveItemFromOrder={RemoveItemFromOrder}
       orderSubTotal={orderSubTotal}/>
+      
+
 
       <Footer />
     </div>

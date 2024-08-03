@@ -6,17 +6,22 @@ import CheckOutItem from "./CheckoutItem";
 
 const PlaceOrder = ({
   handleOrderToggle,
+  calculateTip,
   adjustCredit,
   isOrderOpen,
   orderItems,
   orderSubTotal,
   AddItemToOrder,
   RemoveItemFromOrder,
-  userCredit,
+  formatToTwoDecimalPlaces,
+  
 }) => {
   const [deliveryFee, setDeliveryFee] = useState(2.99);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [tipAdded, setTipAdded] = useState(false);
+  const [tipValue, setTipValue] = useState(0.00);
+
 
   useEffect(() => {
     if (!isOrderOpen) {
@@ -62,10 +67,52 @@ const PlaceOrder = ({
               <h3>Add Tip</h3>
             </div>
             <div className="buttons-box">
-              <button>0%</button>
-              <button>5%</button>
-              <button>10%</button>
-              <button>15%</button>
+              <button
+              onClick={(e) => {
+                e.preventDefault();
+                setTipValue(0.00);
+              }}
+
+              >0%</button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (tipAdded) {
+                    formatToTwoDecimalPlaces(setTipValue(calculateTip(5)));
+                  } else {
+                    formatToTwoDecimalPlaces(setTipValue(calculateTip(5)));
+                    setTipAdded(true);
+                  }
+                }}
+              >
+                5%
+              </button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (tipAdded) {
+                    formatToTwoDecimalPlaces(setTipValue(calculateTip(10)));
+                  } else {
+                    formatToTwoDecimalPlaces(setTipValue(calculateTip(10)));
+                    setTipAdded(true);
+                  }
+                }}
+              >
+                10%
+              </button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (tipAdded) {
+                    formatToTwoDecimalPlaces(setTipValue(calculateTip(15)));
+                  } else {
+                    formatToTwoDecimalPlaces(setTipValue(calculateTip(15)));
+                    setTipAdded(true);
+                  }
+                }}
+              >
+                15%
+              </button>
             </div>
           </div>
           <div className="summary-section">
@@ -89,7 +136,7 @@ const PlaceOrder = ({
             <div className="order-totals">
               <div>
                 <p>Subtotal</p>
-                <p>£{orderSubTotal}</p>
+                <p>£{orderSubTotal + tipValue}</p>
               </div>
               <div>
                 <p>Delivery</p>
@@ -107,7 +154,7 @@ const PlaceOrder = ({
             <button
               onClick={(e) => {
                 e.preventDefault();
-                let newTotal = orderSubTotal + deliveryFee;
+                let newTotal = orderSubTotal + deliveryFee + tipValue;
 
                 if (adjustCredit(newTotal) === -1) {
                   setError(true);
@@ -122,12 +169,10 @@ const PlaceOrder = ({
         </>
       ) : (
         <div className="empty-cart">
-        <h3>Your cart is empty</h3>
-        <img src="/empty-bag.svg" alt="Empty cart" />
-        <button
-        onClick={handleOrderToggle}
-        >Return to Menus</button>
-      </div>
+          <h3>Your cart is empty</h3>
+          <img src="/empty-bag.svg" alt="Empty cart" />
+          <button onClick={handleOrderToggle}>Return to Menus</button>
+        </div>
       )}
     </div>
   );
