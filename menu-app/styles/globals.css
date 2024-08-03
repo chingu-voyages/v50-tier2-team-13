@@ -257,9 +257,13 @@ footer {
   text-align: left;
 }
 .footer-nav {
-  text-align: right;
+  display: flex;
+  align-self: flex-end;
+  flex-direction: column;
 }
-
+.footer-logos img {
+  height: 20px;
+}
 hr {
   color: #a0a0a0;
 }
@@ -579,6 +583,7 @@ hr {
   margin-bottom: 50px;
 }
 
+
 .empty-cart{
   margin-bottom: 70px;
   display: flex;
@@ -609,10 +614,11 @@ hr {
   margin-right: 15px;
 }
 
+
 .checkout-item-card {
   display: grid;
-  grid-template-columns: auto 1fr; 
-  grid-template-rows: auto; 
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto;
   gap: 10px;
   align-items: center;
   padding: 10px;
@@ -621,26 +627,26 @@ hr {
 }
 
 .checkout-item-image-box {
-  grid-column: 1; 
+  grid-column: 1;
   display: flex;
   align-items: center;
 }
 
 .checkout-item-image-box img {
-  width: 100px; 
+  width: 100px;
   height: auto;
   border-radius: 10px;
 }
 
 .checkout-item-info-button-container {
   display: grid;
-  grid-column: 2; 
-  grid-template-rows: 1fr auto; 
+  grid-column: 2;
+  grid-template-rows: 1fr auto;
   gap: 25px;
 }
 
 .checkout-item-info-box {
-  grid-row: 1; 
+  grid-row: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -657,11 +663,11 @@ hr {
 }
 
 .checkout-item-button {
-  grid-row: 2; 
+  grid-row: 2;
   display: flex;
   align-items: flex-end;
   gap: 10px;
-  justify-content: flex-end; 
+  justify-content: flex-end;
 }
 
 .checkout-item-button button {
@@ -676,11 +682,11 @@ hr {
 }
 
 .minus-button {
-  background-color: #FFEC95; 
+  background-color: #ffec95;
 }
 
 .plus-button {
-  background-color: #FFEC95; 
+  background-color: #ffec95;
 }
 
 .checkout-item-button p {
@@ -689,4 +695,3 @@ hr {
   text-align: center;
   font-size: 1.2em;
 }
-

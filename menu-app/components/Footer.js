@@ -5,7 +5,10 @@ function Footer() {
   return (
     <footer>
       <div className="footer-slogan">
-        <img src="easyeats-logo-black.svg" alt="easyeats-logo-black.svg" />
+        <img
+          src="easyeats-logo-without-space.svg"
+          alt="easyeats-logo-black.svg"
+        />
         <h5>Dining choices made simple!</h5>
       </div>
 
@@ -14,14 +17,19 @@ function Footer() {
         <h5>About us</h5>
         <h5>Contact</h5>
         <h5>FAQ</h5>
-        <h5>little logo</h5>
+        <div className="footer-logos">
+          <img src="/github.png" href="" />
+          <img src="/facebook.png" href="" />
+          <img src="/instagram.png" href="" />
+          <img src="/twitterx.png" href="" />
+        </div>
       </div>
 
       <div className="details-below footer">
         <hr></hr>
         <h5>
           <ul className="db-main">
-            <li style={{ listStyleType: "none" }}>2024 EasyEats</li>
+            <li style={{ listStyleType: "none" }}> ©2024 EasyEats</li>
             <li>Privacy</li>
             <li>Terms</li>
             <li>Sitemap</li>
