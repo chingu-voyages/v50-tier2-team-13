@@ -78,9 +78,9 @@ const PlaceOrder = ({
                 onClick={(e) => {
                   e.preventDefault();
                   if (tipAdded) {
-                    formatToTwoDecimalPlaces(setTipValue(calculateTip(5)));
+                    setTipValue(calculateTip(5));
                   } else {
-                    formatToTwoDecimalPlaces(setTipValue(calculateTip(5)));
+                    setTipValue(calculateTip(5));
                     setTipAdded(true);
                   }
                 }}
@@ -91,9 +91,9 @@ const PlaceOrder = ({
                 onClick={(e) => {
                   e.preventDefault();
                   if (tipAdded) {
-                    formatToTwoDecimalPlaces(setTipValue(calculateTip(10)));
+                   setTipValue(calculateTip(10));
                   } else {
-                    formatToTwoDecimalPlaces(setTipValue(calculateTip(10)));
+                    setTipValue(calculateTip(10));
                     setTipAdded(true);
                   }
                 }}
@@ -104,9 +104,9 @@ const PlaceOrder = ({
                 onClick={(e) => {
                   e.preventDefault();
                   if (tipAdded) {
-                    formatToTwoDecimalPlaces(setTipValue(calculateTip(15)));
+                    setTipValue(calculateTip(15));
                   } else {
-                    formatToTwoDecimalPlaces(setTipValue(calculateTip(15)));
+                    (setTipValue(calculateTip(15)));
                     setTipAdded(true);
                   }
                 }}
