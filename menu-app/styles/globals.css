@@ -248,17 +248,18 @@ footer {
   background-color: #f7f7f7;
   display: flex;
   flex-direction: column;
-  padding: 5%;
+  padding: 1.5% 5% 5% 5%;
   flex-wrap: nowrap;
 }
 .footer-title {
-  width: 50px;
+  width: 100px;
 }
 
 .footer-slogan {
   display: flex;
-  text-align: left;
+
   justify-content: space-between;
+  font-weight: 100;
 }
 
 .easyeats-slogan {
@@ -269,9 +270,11 @@ footer {
 .footer-nav {
   display: flex;
   flex-direction: column;
+  line-height: 2.5;
+  text-align: right;
 }
 .footer-logos img {
-  height: 20px;
+  height: 30px;
 }
 hr {
   color: #a0a0a0;

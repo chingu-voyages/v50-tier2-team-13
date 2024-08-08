@@ -29,8 +29,8 @@ function Footer() {
               alt="Github v50-tier2-team-13"
             />
             <img src="/facebook.png" href="" alt="facebook" />
-            <img src="/instagram.png" href="instagram" />
-            <img src="/twitterx.png" href="twitter" />
+            <img src="/instagram.png" href="" alt="instagram" />
+            <img src="/twitterx.png" href="" alt="twitter" />
           </div>
         </div>
       </div>
