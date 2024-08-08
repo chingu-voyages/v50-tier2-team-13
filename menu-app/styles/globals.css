@@ -351,11 +351,17 @@ hr {
   height: 3.1rem;
 }
 
-.item-added-container {
+.item-added-popup-container {
+  display: flex;
+  position: absolute;
+}
+.item-added-popup-content {
   background-color: white;
   border-radius: 2rem;
   width: 20rem;
-  height: 20rem;
+  height: 5rem;
+  text-align: center;
+  padding-top: 1rem;
 }
 /**********LOAD CREDIT**********/
 
