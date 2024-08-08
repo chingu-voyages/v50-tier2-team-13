@@ -5,6 +5,11 @@ import ItemAdded from "./ItemAdded";
 
 export default function Modal({ setShowModal, modalItem, AddItemToOrder }) {
   const [showItemAdded, setShowItemAdded] = useState(false);
+  const handleModalClick = (e) => {
+    e.preventDefault();
+    AddItemToOrder(modalItem);
+    setShowItemAdded(true);
+  };
   return (
     <div className="modal-overlay">
       <div className="modal-container">
@@ -26,17 +31,11 @@ export default function Modal({ setShowModal, modalItem, AddItemToOrder }) {
           </div>
           <hr></hr>
           <div className="modal-button">
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                AddItemToOrder(modalItem);
-              }}
-            >
-              Add to Cart
-            </button>
+            <button onClick={handleModalClick}>Add to Cart</button>
           </div>
         </div>
       </div>
+      {showItemAdded && <ItemAdded />}
     </div>
   );
 }
