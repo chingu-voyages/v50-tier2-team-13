@@ -60,6 +60,15 @@ h6 {
   scroll-snap-align: start;
   width: 80px;
 }
+.category-item:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  background-color: #ffec95;
+  border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
+  align-items: center;
+}
 
 .category-item img {
   width: 50px;
