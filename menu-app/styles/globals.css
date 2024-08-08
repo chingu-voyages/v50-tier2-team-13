@@ -23,7 +23,6 @@ h6 {
   margin: 0;
 }
 
-
 .back-arrow {
   width: 25px;
   height: 25px;
@@ -252,13 +251,23 @@ footer {
   padding: 5%;
   flex-wrap: nowrap;
 }
+.footer-title {
+  width: 50px;
+}
 
 .footer-slogan {
+  display: flex;
   text-align: left;
+  justify-content: space-between;
 }
+
+.easyeats-slogan {
+  display: flex;
+  flex-direction: column;
+}
+
 .footer-nav {
   display: flex;
-  align-self: flex-end;
   flex-direction: column;
 }
 .footer-logos img {
@@ -301,10 +310,12 @@ hr {
   justify-content: space-between;
   border-top-left-radius: 0.3rem;
   border-top-right-radius: 0.3rem;
+  height: 250px;
 }
 
 .modal-item-image-box img {
-  height: 15rem;
+  object-fit: cover;
+
   width: 100%;
 }
 .modal-item-info-box {
@@ -327,6 +338,21 @@ hr {
   border: #161616;
   margin-top: 1rem;
   margin-left: 1rem;
+}
+
+.modal-button button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  border-color: #333;
+  width: 12.6rem;
+  height: 3.1rem;
+}
+
+.item-added-container {
+  background-color: white;
+  border-radius: 2rem;
+  width: 20rem;
+  height: 20rem;
 }
 /**********LOAD CREDIT**********/
 
@@ -408,8 +434,8 @@ hr {
 }
 
 .button-box button:hover {
- background-color: #454545;
- color: white;
+  background-color: #454545;
+  color: white;
 }
 
 .funds-box {
@@ -551,14 +577,14 @@ hr {
   max-width: 175px;
 }
 
-.buttons-box button:hover{
-  background-color:#FFE77B;
-  color:#161616;
+.buttons-box button:hover {
+  background-color: #ffe77b;
+  color: #161616;
 }
 
-.buttons-box button:focus{
+.buttons-box button:focus {
   background-color: #161616;
-  color:white;
+  color: white;
 }
 
 .summary-section {
@@ -570,7 +596,7 @@ hr {
   border-bottom: solid 1px #e2e1e1;
 }
 
-.order-totals{
+.order-totals {
   margin-top: 20px;
 }
 
@@ -583,8 +609,7 @@ hr {
   margin-bottom: 50px;
 }
 
-
-.empty-cart{
+.empty-cart {
   margin-bottom: 70px;
   display: flex;
   justify-content: center;
@@ -594,26 +619,24 @@ hr {
   justify-content: space-between;
 }
 
-.empty-cart h3{
+.empty-cart h3 {
   margin-top: 50px;
   font-size: 1.8em;
 }
 
-.empty-cart button{
-
+.empty-cart button {
   padding: 10px 5px 10px 5px;
-  min-width: 250px ;
+  min-width: 250px;
   background-color: black;
   border-radius: 10px;
   color: white;
 }
 
-.empty-cart img{
+.empty-cart img {
   max-width: 250px;
   margin-bottom: 30px;
   margin-right: 15px;
 }
-
 
 .checkout-item-card {
   display: grid;
