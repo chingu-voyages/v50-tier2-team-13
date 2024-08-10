@@ -2,6 +2,7 @@
 
 import MenuItem from "./MenuItem";
 import { IoIosArrowBack } from "react-icons/io";
+import Navbar from "./Navbar";
 
 const Menu = ({
   currentMenuData,

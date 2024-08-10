@@ -1,18 +1,21 @@
 "use client";
 
 import React from "react";
-
 import Modal from "./Modal";
 import { useState } from "react";
 
-
-const MenuItem = ({ item , AddItemToOrder}) => {
-    const [showModal, setShowModal] = useState(false);
-
+const MenuItem = ({ item, AddItemToOrder }) => {
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className="menu-item-card">
-      {showModal && <Modal setShowModal={setShowModal} modalItem={item} AddItemToOrder={AddItemToOrder}  />}
+      {showModal && (
+        <Modal
+          setShowModal={setShowModal}
+          modalItem={item}
+          AddItemToOrder={AddItemToOrder}
+        />
+      )}
       <div className="menu-item-image-box">
         <img src={item.img} alt={item.id} />
       </div>
