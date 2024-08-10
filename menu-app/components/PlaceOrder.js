@@ -3,6 +3,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoLocationOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import CheckOutItem from "./CheckoutItem";
+import Footer from "./Footer";
 
 const PlaceOrder = ({
   handleOrderToggle,
@@ -14,14 +15,12 @@ const PlaceOrder = ({
   AddItemToOrder,
   RemoveItemFromOrder,
   formatToTwoDecimalPlaces,
-
 }) => {
   const [deliveryFee, setDeliveryFee] = useState(2.99);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [tipAdded, setTipAdded] = useState(false);
-  const [tipValue, setTipValue] = useState(0.00);
-
+  const [tipValue, setTipValue] = useState(0.0);
 
   useEffect(() => {
     if (!isOrderOpen) {
@@ -68,12 +67,13 @@ const PlaceOrder = ({
             </div>
             <div className="buttons-box">
               <button
-              onClick={(e) => {
-                e.preventDefault();
-                setTipValue(0.00);
-              }}
-
-              >0%</button>
+                onClick={(e) => {
+                  e.preventDefault();
+                  setTipValue(0.0);
+                }}
+              >
+                0%
+              </button>
               <button
                 onClick={(e) => {
                   e.preventDefault();
@@ -91,7 +91,7 @@ const PlaceOrder = ({
                 onClick={(e) => {
                   e.preventDefault();
                   if (tipAdded) {
-                   setTipValue(calculateTip(10));
+                    setTipValue(calculateTip(10));
                   } else {
                     setTipValue(calculateTip(10));
                     setTipAdded(true);
@@ -106,7 +106,7 @@ const PlaceOrder = ({
                   if (tipAdded) {
                     setTipValue(calculateTip(15));
                   } else {
-                    (setTipValue(calculateTip(15)));
+                    setTipValue(calculateTip(15));
                     setTipAdded(true);
                   }
                 }}
@@ -174,6 +174,7 @@ const PlaceOrder = ({
           <button onClick={handleOrderToggle}>Return to Menus</button>
         </div>
       )}
+      <Footer />
     </div>
   );
 };

@@ -23,14 +23,18 @@ function Footer() {
           </div>
 
           <div className="footer-logos">
-            <img
-              src="/github.png"
-              href="https://github.com/chingu-voyages/v50-tier2-team-13"
-              alt="Github v50-tier2-team-13"
-            />
-            <img src="/facebook.png" href="" alt="facebook" />
-            <img src="/instagram.png" href="" alt="instagram" />
-            <img src="/twitterx.png" href="" alt="twitter" />
+            <a href="https://github.com/chingu-voyages/v50-tier2-team-13">
+              <img src="/github.png" alt="Github v50-tier2-team-13" />
+            </a>
+            <a href="https://www.facebook.com/">
+              <img src="/facebook.png" href="" alt="facebook" />
+            </a>
+            <a href="https://www.instagram.com/">
+              <img src="/instagram.png" href="" alt="instagram" />
+            </a>
+            <a href="https://x.com/">
+              <img src="/twitterx.png" href="" alt="twitter" />
+            </a>
           </div>
         </div>
       </div>

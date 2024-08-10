@@ -1,8 +1,9 @@
 "use client";
 
+import Footer from "./Footer";
 import MenuItem from "./MenuItem";
 import { IoIosArrowBack } from "react-icons/io";
-import Navbar from "./Navbar";
+
 
 const Menu = ({
   currentMenuData,
@@ -19,6 +20,7 @@ const Menu = ({
 
   return (
     <div className={`menu-box ${isOpen ? "open" : ""}`}>
+      
       <div className="go-back">
         <IoIosArrowBack className="back-arrow" onClick={handleToggleMenu} />
         <p>Back</p>
@@ -47,6 +49,7 @@ const Menu = ({
           <div></div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

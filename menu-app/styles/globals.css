@@ -182,6 +182,9 @@ h6 {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .icon-box img {
@@ -259,6 +262,7 @@ footer {
   flex-direction: column;
   padding: 1.5% 5% 5% 5%;
   flex-wrap: nowrap;
+  position: sticky;
 }
 .footer-title {
   width: 100px;
@@ -282,6 +286,7 @@ footer {
   line-height: 2.5;
   text-align: right;
 }
+
 .footer-logos img {
   height: 30px;
 }
