@@ -4,7 +4,6 @@ import Footer from "./Footer";
 import MenuItem from "./MenuItem";
 import { IoIosArrowBack } from "react-icons/io";
 
-
 const Menu = ({
   currentMenuData,
   isOpen,
@@ -20,7 +19,6 @@ const Menu = ({
 
   return (
     <div className={`menu-box ${isOpen ? "open" : ""}`}>
-      
       <div className="go-back">
         <IoIosArrowBack className="back-arrow" onClick={handleToggleMenu} />
         <p>Back</p>
