@@ -15,7 +15,7 @@ function Footer() {
         </div>
 
         <div className="footer-nav">
-          <div>
+          <div className="footer-text-box">
             <h5>Home</h5>
             <h5>About us</h5>
             <h5>Contact</h5>

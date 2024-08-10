@@ -1,6 +1,5 @@
 "use client";
 
-import Footer from "./Footer";
 import MenuItem from "./MenuItem";
 import { IoIosArrowBack } from "react-icons/io";
 
@@ -47,7 +46,6 @@ const Menu = ({
           <div></div>
         )}
       </div>
-      <Footer />
     </div>
   );
 };
