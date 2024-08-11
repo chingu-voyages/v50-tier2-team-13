@@ -21,8 +21,11 @@ Easy Eats is a single-page application designed to provide users with a seamless
 ## Technologies Used
 
 Frontend: HTML, CSS, JavaScript, React, Next.js
+
 Mapping: Leaflet.js for displaying restaurant locations on an interactive map.
+
 APIs: Free Food Menus API for fetching restaurant menus.
+
 Design: Figma for UI/UX design.
 
 ## Our Team
