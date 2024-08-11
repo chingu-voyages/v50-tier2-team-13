@@ -8,7 +8,10 @@ export default function Modal({ setShowModal, modalItem, AddItemToOrder }) {
   const handleModalClick = (e) => {
     e.preventDefault();
     AddItemToOrder(modalItem);
-    setShowItemAdded(true);
+    setTimeout(() => {
+      setShowItemAdded(true);
+      setTimeout(() => setShowItemAdded(false), 1100);
+    }, 100);
   };
   return (
     <div className="modal-overlay">
@@ -20,7 +23,6 @@ export default function Modal({ setShowModal, modalItem, AddItemToOrder }) {
           />
           <p>Back</p>
         </div>
-
         <div className="modal-content">
           <div className="modal-item-image-box">
             <img src={modalItem.img} alt={modalItem.id} />
@@ -39,3 +41,4 @@ export default function Modal({ setShowModal, modalItem, AddItemToOrder }) {
     </div>
   );
 }
+/**/

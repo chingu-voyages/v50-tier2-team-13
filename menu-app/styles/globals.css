@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=AR+One+Sans:wght@400..700&family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Wix+Madefor+Display:wght@500&display=swap");
+
 html,
 body {
   margin: 0;
@@ -262,7 +264,6 @@ footer {
   flex-direction: column;
   padding: 1.5% 5% 5% 5%;
   flex-wrap: nowrap;
-  position: sticky;
 }
 .footer-title {
   width: 100px;
@@ -287,6 +288,11 @@ footer {
   text-align: right;
 }
 
+.footer-text-box h5 {
+  font-family: "Montserrat";
+  font-weight: 500 !important;
+}
+
 .footer-logos img {
   height: 30px;
 }
@@ -298,6 +304,8 @@ hr {
   flex-direction: row;
   gap: 20px;
   padding: 0;
+  font-family: "Montserrat";
+  font-weight: 500 !important;
 }
 
 /***********MODAL************/
@@ -373,9 +381,12 @@ hr {
   background-color: white;
   border-radius: 2rem;
   width: 20rem;
-  height: 5rem;
+  height: 4rem;
   text-align: center;
-  padding-top: 1rem;
+  padding-top: 2rem;
+}
+.item-added-popup-content p {
+  margin: 0;
 }
 /**********LOAD CREDIT**********/
 
