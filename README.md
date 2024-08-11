@@ -1,43 +1,35 @@
 https://easy-eats-cwi6.vercel.app/
 
 
-# voyage-tasks
+# Easy Eats 
+Easy Eats is a single-page application designed to provide users with a seamless and intuitive way to explore and order food from the best restaurants around them. Whether you are using a desktop or a mobile device, Easy Eats delivers a smooth experience, ensuring that you can easily find and order your favorite meals.
 
-Your project's `readme` is as important to success as your code. For 
-this reason you should put as much care into its creation and maintenance
-as you would any other component of the application.
 
-If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point - 
-[Keys to a well written README](https://tinyurl.com/yk3wubft).
+## Features
+-Responsive Design: Easy Eats is designed to work seamlessly across both desktop and mobile devices.
 
-And before we go there's "one more thing"! Once you decide what to include
-in your `readme` feel free to replace the text we've provided here.
+-Interactive Map Integration: Using Leaflet.js, the app provides an interactive map that displays the best restaurants based on the user's selected food category.
 
-> Own it & Make it your Own!
+-Dynamic Menu: The app leverages the Free Food Menus API to dynamically fetch and display menus for various food categories.
 
-## Team Documents
+-User-Friendly UI/UX: Designed with Figma, the app ensures a visually appealing and user-centric interface.
 
-You may find these helpful as you work together to organize your project.
+-Smooth Ordering Process: Users can easily browse through food categories, view restaurant options on the map, select their desired items, add them to the cart, and proceed to checkout.
 
-- [Team Project Ideas](./docs/team_project_ideas.md)
-- [Team Decision Log](./docs/team_decision_log.md)
+-Secure Purchase: The app includes a secure purchasing process to complete the order.
 
-Meeting Agenda templates (located in the `/docs` directory in this repo):
+## Technologies Used
 
-- Meeting - Voyage Kickoff --> ./docs/meeting-voyage_kickoff.docx
-- Meeting - App Vision & Feature Planning --> ./docs/meeting-vision_and_feature_planning.docx
-- Meeting - Sprint Retrospective, Review, and Planning --> ./docs/meeting-sprint_retrospective_review_and_planning.docx
-- Meeting - Sprint Open Topic Session --> ./docs/meeting-sprint_open_topic_session.docx
+Frontend: HTML, CSS, JavaScript, React, Next.js
+
+Mapping: Leaflet.js for displaying restaurant locations on an interactive map.
+
+APIs: Free Food Menus API for fetching restaurant menus.
+
+Design: [Figma](https://www.figma.com/proto/Wq2RNK1fmpzwymqcd09w0L/High-Fidelity-Designs-%26-Prototypes?page-id=112%3A38293&node-id=112-38591&viewport=593%2C550%2C0.07&t=i17eSa71F1ukFM7S-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=112%3A38591&show-proto-sidebar=1)  for UI/UX design.
 
 ## Our Team
-
-Everyone on your team should add their name along with a link to their GitHub
-& optionally their LinkedIn profiles below. Do this in Sprint #1 to validate
-your repo access and to practice PR'ing with your team *before* you start
-coding!
-
-- Milton: [GitHub](https://github.com/milton-t) / [LinkedIn](https://www.linkedin.com/in/miltontimms/)
-- Sheldon: [GitHub](https://github.com/ssmall90) / [LinkedIn](https://www.linkedin.com/in/sheldon-small-373003224)
-- Eslam AbdElhakem: [GitHub](https://github.com/EslamAbdElhakem) / [LinkedIn](https://linkedin.com/in/EslamAbdElhakem)
-- Micaela: [GitHub](https://github.com/mickeymic25) / [LinkedIn](https://linkedin.com/in/liaccountname)
+This project was a collaborative effort, with each team member bringing their unique skills and expertise to the table. From frontend development and API integration to design and user experience, every aspect of Easy Eats was carefully crafted by our dedicated team.
+- UI/UX Designer : Milton [GitHub](https://github.com/milton-t) / [LinkedIn](https://www.linkedin.com/in/miltontimms/)
+- Front-End Developer: Sheldon [GitHub](https://github.com/ssmall90) / [LinkedIn](https://www.linkedin.com/in/sheldon-small-373003224)
+- Front-End Developer: Micaela [GitHub](https://github.com/mickeymic25) / [LinkedIn](https://www.linkedin.com/in/micaela-opoku-mensah/)
