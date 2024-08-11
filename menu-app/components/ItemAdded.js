@@ -1,4 +1,6 @@
 import React from "react";
+import { IoIosArrowBack } from "react-icons/io";
+import Modal from "./Modal";
 
 function ItemAdded() {
   return (

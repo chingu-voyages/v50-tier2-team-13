@@ -264,7 +264,6 @@ footer {
   flex-direction: column;
   padding: 1.5% 5% 5% 5%;
   flex-wrap: nowrap;
-  position: sticky;
 }
 .footer-title {
   width: 100px;
@@ -382,9 +381,12 @@ hr {
   background-color: white;
   border-radius: 2rem;
   width: 20rem;
-  height: 5rem;
+  height: 4rem;
   text-align: center;
-  padding-top: 1rem;
+  padding-top: 2rem;
+}
+.item-added-popup-content p {
+  margin: 0;
 }
 /**********LOAD CREDIT**********/
 
