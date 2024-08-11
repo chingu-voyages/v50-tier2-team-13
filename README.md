@@ -26,7 +26,7 @@ Mapping: Leaflet.js for displaying restaurant locations on an interactive map.
 
 APIs: Free Food Menus API for fetching restaurant menus.
 
-Design: Figma for UI/UX design.
+Design: [Figma](https://www.figma.com/proto/Wq2RNK1fmpzwymqcd09w0L/High-Fidelity-Designs-%26-Prototypes?page-id=112%3A38293&node-id=112-38591&viewport=593%2C550%2C0.07&t=i17eSa71F1ukFM7S-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=112%3A38591&show-proto-sidebar=1)  for UI/UX design.
 
 ## Our Team
 This project was a collaborative effort, with each team member bringing their unique skills and expertise to the table. From frontend development and API integration to design and user experience, every aspect of Easy Eats was carefully crafted by our dedicated team.
